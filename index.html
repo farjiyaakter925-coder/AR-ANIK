@@ -1,80 +1,151 @@
-index.html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nay O Alor Pothe - AR Anik</title>
+    <!-- Google Fonts for Professional English & Bengali Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Serif+Bengali:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --primary-color: #0d5c46;
+            --accent-color: #d4af37;
+            --bg-color: #f7f9f8;
+            --card-bg: #ffffff;
+            --text-dark: #1b2a26;
+            --text-muted: #5a6b66;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
-            background-color: #f4f7f6;
-            color: #333;
-            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: 'Poppins', 'Noto Serif Bengali', sans-serif;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
+
         .container {
-            max-width: 900px;
+            max-width: 960px;
             margin: 0 auto;
             flex: 1;
+            width: 100%;
         }
         
         /* Header & Profile Section */
         .profile-header {
             text-align: center;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            background: var(--card-bg);
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(13, 92, 70, 0.08);
+            margin-bottom: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
         }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #16a085;
-            margin-bottom: 15px;
+            border: 3px solid var(--accent-color);
+            padding: 4px;
+            background-color: #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
+
         .website-title {
-            color: #16a085;
-            font-size: 28px;
-            margin-bottom: 5px;
+            color: var(--primary-color);
+            font-family: 'Noto Serif Bengali', serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
         }
+
         .author-name {
-            color: #7f8c8d;
+            color: var(--accent-color);
+            font-family: 'Cinzel', serif;
             font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         /* Card Section */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
+
         .card {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            background: var(--card-bg);
+            padding: 30px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             text-align: center;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border-left: 5px solid #16a085;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid #eef2f0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(13, 92, 70, 0.12);
+            border-color: rgba(212, 175, 55, 0.4);
         }
+
+        .card-number {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
         .card h3 {
-            color: #2c3e50;
+            color: var(--primary-color);
+            font-family: 'Noto Serif Bengali', serif;
             font-size: 20px;
+            font-weight: 600;
+            line-height: 1.4;
         }
 
         /* Modal Section */
@@ -85,49 +156,77 @@ index.html<!DOCTYPE html>
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(13, 42, 34, 0.6);
+            backdrop-filter: blur(4px);
             justify-content: center;
             align-items: center;
             padding: 20px;
+            z-index: 1000;
         }
+
         .modal-content {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 500px;
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 20px;
+            max-width: 550px;
             width: 100%;
             position: relative;
-            animation: fadeIn 0.3s ease-in-out;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: modalSlide 0.3s ease-out;
+            border: 1px solid var(--accent-color);
         }
+
         .close-btn {
             position: absolute;
             top: 15px;
             right: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #aaa;
+            font-size: 28px;
+            font-weight: 300;
+            color: var(--text-muted);
             cursor: pointer;
+            transition: color 0.2s;
         }
+
         .close-btn:hover {
-            color: #333;
+            color: var(--primary-color);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
+
+        .modal-title {
+            color: var(--primary-color);
+            font-family: 'Noto Serif Bengali', serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .modal-body {
+            line-height: 1.8;
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* Footer Section */
         footer {
             text-align: center;
-            padding: 20px 0 10px;
-            margin-top: 40px;
-            color: #7f8c8d;
+            padding: 25px 0 10px;
+            margin-top: 50px;
+            color: var(--text-muted);
             font-size: 14px;
-            border-top: 1px solid #e0e0e0;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
         }
-        footer span {
-            font-weight: bold;
-            color: #16a085;
+
+        footer .designer-name {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -136,27 +235,34 @@ index.html<!DOCTYPE html>
 <div class="container">
     <!-- Profile Header -->
     <div class="profile-header">
-        <img src="anik.jpg" alt="AR Anik" class="profile-img">
+        <div class="profile-img-wrapper">
+            <img src="anik.jpg" alt="AR Anik" class="profile-img">
+        </div>
         <h1 class="website-title">ন্যায ও আলোর পথে</h1>
         <p class="author-name">AR Anik</p>
     </div>
 
     <!-- Cards Container -->
     <div class="card-grid">
-        <div class="card" onclick="openModal('Surah oh Bekkha', 'Khub shighroi ekhane surah ebong er bekkha jukto kora hobe.')">
-            <h3>1. Surah oh Bekkha</h3>
+        <div class="card" onclick="openModal('সূরা ও ব্যাখ্যা', 'এখানে বিস্তারিত সূরা ও তার তাফসীর যুক্ত করা হবে।')">
+            <span class="card-number">01</span>
+            <h3>সূরা ও ব্যাখ্যা</h3>
         </div>
-        <div class="card" onclick="openModal('Hadis Sorif', 'Khub shighroi ekhane hadis sorif er ebong bekkha jukto kora hobe.')">
-            <h3>2. Hadis Sorif</h3>
+        <div class="card" onclick="openModal('হাদিস শরিফ', 'এখানে রসূলুল্লাহ (সাঃ)-এর গুরুত্বপূর্ণ হাদিস সমূহ এবং তার ব্যাখ্যা প্রদান করা হবে।')">
+            <span class="card-number">02</span>
+            <h3>হাদিস শরিফ</h3>
         </div>
-        <div class="card" onclick="openModal('Salat o Siyam er Bekkha', 'Salat ebong siyam er bistorito bekkha ekhane thakbe.')">
-            <h3>3. Salat o Siyam er Bekkha</h3>
+        <div class="card" onclick="openModal('সালাত ও সিয়ামের ব্যাখ্যা', 'সালাত (নামাজ) এবং সিয়াম (রোজা)-এর সঠিক নিয়ম ও ফজিলত সংক্রান্ত বিষয়াবলী।')">
+            <span class="card-number">03</span>
+            <h3>সালাত ও সিয়ামের ব্যাখ্যা</h3>
         </div>
-        <div class="card" onclick="openModal('Manob Jibone Islamer Gurotto', 'Manob jibone islamer gurotto o tatporjo neye bekkha.')">
-            <h3>4. Manob Jibone Islamer Gurotto</h3>
+        <div class="card" onclick="openModal('মানব জীবনে ইসলামের গুরুত্ব', 'দৈনন্দিন জীবনে ইসলামী আদর্শের প্রয়োগ ও গুরুত্ব।')">
+            <span class="card-number">04</span>
+            <h3>মানব জীবনে ইসলামের গুরুত্ব</h3>
         </div>
-        <div class="card" onclick="openModal('Amar Jibor', 'AR Anik er jiboni ebong bektigoto bhabna.')">
-            <h3>5. Amar Jibor</h3>
+        <div class="card" onclick="openModal('আমার জীবন', 'AR Anik-এর ব্যক্তিগত জীবনী, চিন্তা-চেতনা এবং ইসলামের পথে যাত্রার গল্প।')">
+            <span class="card-number">05</span>
+            <h3>আমার জীবন</h3>
         </div>
     </div>
 </div>
@@ -165,14 +271,14 @@ index.html<!DOCTYPE html>
 <div id="infoModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
-        <h2 id="modalTitle" style="color: #16a085; margin-bottom: 15px;"></h2>
-        <p id="modalBody" style="line-height: 1.6; color: #555;"></p>
+        <h2 id="modalTitle" class="modal-title"></h2>
+        <p id="modalBody" class="modal-body"></p>
     </div>
 </div>
 
 <!-- Footer -->
 <footer>
-    Designed by <span>Mamun</span>
+    Designed by <span class="designer-name">Mamun</span>
 </footer>
 
 <script>
