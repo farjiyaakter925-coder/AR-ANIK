@@ -1,0 +1,199 @@
+index.html<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nay O Alor Pothe - AR Anik</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            flex: 1;
+        }
+        
+        /* Header & Profile Section */
+        .profile-header {
+            text-align: center;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #16a085;
+            margin-bottom: 15px;
+        }
+        .website-title {
+            color: #16a085;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .author-name {
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+
+        /* Card Section */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 5px solid #16a085;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            color: #2c3e50;
+            font-size: 20px;
+        }
+
+        /* Modal Section */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            color: #333;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer Section */
+        footer {
+            text-align: center;
+            padding: 20px 0 10px;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 14px;
+            border-top: 1px solid #e0e0e0;
+        }
+        footer span {
+            font-weight: bold;
+            color: #16a085;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <img src="anik.jpg" alt="AR Anik" class="profile-img">
+        <h1 class="website-title">ন্যায ও আলোর পথে</h1>
+        <p class="author-name">AR Anik</p>
+    </div>
+
+    <!-- Cards Container -->
+    <div class="card-grid">
+        <div class="card" onclick="openModal('Surah oh Bekkha', 'Khub shighroi ekhane surah ebong er bekkha jukto kora hobe.')">
+            <h3>1. Surah oh Bekkha</h3>
+        </div>
+        <div class="card" onclick="openModal('Hadis Sorif', 'Khub shighroi ekhane hadis sorif er ebong bekkha jukto kora hobe.')">
+            <h3>2. Hadis Sorif</h3>
+        </div>
+        <div class="card" onclick="openModal('Salat o Siyam er Bekkha', 'Salat ebong siyam er bistorito bekkha ekhane thakbe.')">
+            <h3>3. Salat o Siyam er Bekkha</h3>
+        </div>
+        <div class="card" onclick="openModal('Manob Jibone Islamer Gurotto', 'Manob jibone islamer gurotto o tatporjo neye bekkha.')">
+            <h3>4. Manob Jibone Islamer Gurotto</h3>
+        </div>
+        <div class="card" onclick="openModal('Amar Jibor', 'AR Anik er jiboni ebong bektigoto bhabna.')">
+            <h3>5. Amar Jibor</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="infoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle" style="color: #16a085; margin-bottom: 15px;"></h2>
+        <p id="modalBody" style="line-height: 1.6; color: #555;"></p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    Designed by <span>Mamun</span>
+</footer>
+
+<script>
+    function openModal(title, content) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalBody').innerText = content;
+        document.getElementById('infoModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('infoModal').style.display = 'none';
+    }
+
+    // Modal-er baire click korle modal bondho hobe
+    window.onclick = function(event) {
+        var modal = document.getElementById('infoModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>
