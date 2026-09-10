@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nay O Alor Pothe - AR Anik (Ultra Glassy 3D)</title>
-    <!-- Google Fonts -->
+    <title>Nay O Alor Pothe - AR Anik</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Serif+Bengali:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Noto+Serif+Bengali:wght@500;600;700&family=Amiri:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #030a12;
-            --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
+            --bg-color: #0b1a24;
+            --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
             --border-glow: rgba(0, 212, 255, 0.4);
             --accent-cyan: #00d2ff;
-            --accent-gold-light: #fff3a1;
             --accent-gold: #ffd700;
-            --accent-gold-dark: #b8860b;
             --text-light: #e0f2fe;
             --text-muted: #8bb1c7;
         }
@@ -31,119 +28,111 @@
         body {
             background: var(--bg-color);
             background-image: 
-                radial-gradient(circle at 15% 20%, rgba(0, 180, 255, 0.18) 0%, transparent 45%),
-                radial-gradient(circle at 85% 80%, rgba(0, 220, 255, 0.15) 0%, transparent 45%);
+                radial-gradient(circle at 20% 30%, rgba(0, 150, 200, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 80, 130, 0.3) 0%, transparent 50%);
             color: var(--text-light);
             font-family: 'Poppins', 'Noto Serif Bengali', sans-serif;
-            padding: 40px 20px;
+            padding: 30px 15px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
             flex: 1;
             width: 100%;
         }
         
-        /* Ultra Glass Header Section */
+        /* 3D Curved Profile Header Panel */
         .profile-header {
             text-align: center;
-            background: var(--glass-bg);
-            padding: 45px 20px;
-            border-radius: 28px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
-            border-right: 1px solid rgba(0, 210, 255, 0.2);
+            background: linear-gradient(145deg, rgba(20, 50, 70, 0.6), rgba(5, 20, 32, 0.8));
+            padding: 40px 20px 30px;
+            border-radius: 35px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 210, 255, 0.3);
             box-shadow: 
-                0 20px 50px rgba(0, 0, 0, 0.7),
-                inset 0 2px 2px rgba(255, 255, 255, 0.25),
-                inset 0 -2px 15px rgba(0, 210, 255, 0.15);
+                0 20px 40px rgba(0, 0, 0, 0.7),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3),
+                inset 0 -5px 15px rgba(0, 210, 255, 0.15);
             margin-bottom: 50px;
             position: relative;
+            transform-style: preserve-3d;
         }
 
         .profile-img-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .profile-img {
-            width: 135px;
-            height: 135px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--accent-cyan);
-            padding: 5px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            border: 4px solid var(--accent-cyan);
+            padding: 3px;
+            background: #0b1a24;
             box-shadow: 
-                0 0 30px rgba(0, 210, 255, 0.6),
-                inset 0 0 15px rgba(0, 0, 0, 0.8);
+                0 10px 25px rgba(0, 0, 0, 0.8),
+                0 0 20px rgba(0, 210, 255, 0.6);
         }
 
         .website-title {
             color: #ffffff;
             font-family: 'Noto Serif Bengali', serif;
-            font-size: 38px;
+            font-size: 36px;
             font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(0, 210, 255, 0.7), 0 0 40px rgba(0, 210, 255, 0.3);
+            margin-top: 35px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.8);
         }
 
         .author-info {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 12px;
+            flex-direction: column;
         }
 
         .author-name {
             color: var(--accent-cyan);
             font-family: 'Cinzel', serif;
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 700;
             letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
         }
 
         .author-phone {
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px;
-            color: var(--accent-gold-light);
-            background: rgba(255, 215, 0, 0.08);
+            font-size: 13px;
+            color: var(--accent-gold);
+            background: rgba(255, 215, 0, 0.1);
             border: 1px solid rgba(255, 215, 0, 0.3);
-            padding: 4px 14px;
-            border-radius: 20px;
-            box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
-            backdrop-filter: blur(5px);
+            padding: 2px 12px;
+            border-radius: 15px;
         }
 
-        /* 3D Glass Cards Grid Section */
+        /* 3D Glass Cube Grid Section */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 32px;
-            perspective: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            perspective: 1000px;
         }
 
         .card {
-            background: var(--glass-bg);
-            padding: 40px 25px;
-            border-radius: 24px;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 150, 200, 0.05));
+            height: 180px;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 2px solid rgba(255, 255, 255, 0.4);
+            border-left: 2px solid rgba(255, 255, 255, 0.3);
             text-align: center;
             cursor: pointer;
             position: relative;
@@ -151,53 +140,48 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transform-style: preserve-3d;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 15px;
+            transform: rotateX(10deg) rotateY(-5deg);
+            transition: all 0.4s ease;
             box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.6),
-                inset 0 1px 2px rgba(255, 255, 255, 0.2);
+                -10px 15px 25px rgba(0, 0, 0, 0.6),
+                inset 0 1px 2px rgba(255, 255, 255, 0.3);
         }
 
         .card:hover {
-            transform: translateY(-12px) rotateX(8deg) rotateY(-4deg) scale(1.02);
-            border-color: rgba(0, 210, 255, 0.7);
+            transform: translateY(-10px) rotateX(0deg) rotateY(0deg) scale(1.03);
+            border-color: var(--accent-cyan);
             box-shadow: 
-                0 25px 50px rgba(0, 210, 255, 0.3),
-                0 0 25px rgba(0, 210, 255, 0.25),
-                inset 0 2px 4px rgba(255, 255, 255, 0.4);
+                0 20px 35px rgba(0, 210, 255, 0.3),
+                0 0 20px rgba(0, 210, 255, 0.2);
         }
 
-        /* 3D Gold Badge */
+        /* 3D Gold Badge Sphere */
         .card-number {
             position: absolute;
-            top: -18px;
+            top: -15px;
             font-family: 'Cinzel', serif;
-            font-size: 14px;
-            color: #1a0f00;
-            background: linear-gradient(135deg, #fff3a1 0%, #ffd700 50%, #b8860b 100%);
+            font-size: 13px;
+            color: #111;
+            background: radial-gradient(circle at 30% 30%, #fff3a1, #ffd700, #b8860b);
             font-weight: 800;
-            padding: 5px 18px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 
-                0 6px 15px rgba(0, 0, 0, 0.5),
-                0 0 10px rgba(255, 215, 0, 0.5),
-                inset 0 1px 2px #ffffff;
-            transform: translateZ(25px);
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
         .card h3 {
             color: #ffffff;
             font-family: 'Noto Serif Bengali', serif;
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 600;
             line-height: 1.4;
-            margin-top: 10px;
-            transform: translateZ(35px);
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
         }
 
-        /* Glass Modal Section */
+        /* Modal Section */
         .modal {
             display: none;
             position: fixed;
@@ -205,38 +189,32 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(2, 6, 12, 0.85);
+            background-color: rgba(2, 8, 15, 0.88);
             backdrop-filter: blur(12px);
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
             z-index: 1000;
         }
 
         .modal-content {
-            background: linear-gradient(135deg, rgba(20, 40, 60, 0.85), rgba(5, 15, 25, 0.9));
-            padding: 35px;
-            border-radius: 28px;
-            max-width: 650px;
+            background: linear-gradient(145deg, rgba(15, 35, 50, 0.95), rgba(5, 15, 25, 0.95));
+            padding: 30px;
+            border-radius: 25px;
+            max-width: 700px;
             width: 100%;
             max-height: 85vh;
             overflow-y: auto;
             position: relative;
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(0, 210, 255, 0.5);
-            border-top: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 
-                0 25px 60px rgba(0, 210, 255, 0.25),
-                inset 0 1px 3px rgba(255, 255, 255, 0.3);
-            animation: modalSlide 0.3s ease-out;
+            border: 1px solid var(--accent-cyan);
+            box-shadow: 0 20px 50px rgba(0, 210, 255, 0.25);
         }
 
-        /* Modal Custom Scrollbar */
         .modal-content::-webkit-scrollbar {
             width: 6px;
         }
         .modal-content::-webkit-scrollbar-thumb {
-            background: rgba(0, 210, 255, 0.4);
+            background: var(--accent-cyan);
             border-radius: 10px;
         }
 
@@ -245,10 +223,8 @@
             top: 15px;
             right: 20px;
             font-size: 28px;
-            font-weight: 300;
             color: var(--text-muted);
             cursor: pointer;
-            transition: color 0.2s;
         }
 
         .close-btn:hover {
@@ -260,152 +236,103 @@
             margin-bottom: 15px;
             color: var(--accent-cyan);
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             border: 1px solid rgba(0, 210, 255, 0.3);
             padding: 4px 12px;
             border-radius: 15px;
-            background: rgba(0, 210, 255, 0.08);
-            transition: all 0.3s;
-        }
-
-        .back-btn:hover {
-            background: rgba(0, 210, 255, 0.2);
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+            background: rgba(0, 210, 255, 0.1);
         }
 
         .modal-title {
             color: var(--accent-cyan);
             font-family: 'Noto Serif Bengali', serif;
-            font-size: 26px;
+            font-size: 24px;
             margin-bottom: 15px;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             border-bottom: 1px solid rgba(0, 210, 255, 0.3);
-            text-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
         }
 
-        .modal-body {
-            line-height: 1.8;
-            color: var(--text-light);
-            font-size: 16px;
-        }
-
-        /* Surah List Interactive Style */
+        /* Surah Verse Styles */
         .surah-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
         }
 
         .surah-item {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(0, 210, 255, 0.2);
-            padding: 12px 18px;
-            border-radius: 16px;
+            padding: 12px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
         .surah-item:hover {
-            background: rgba(0, 210, 255, 0.15);
+            background: rgba(0, 210, 255, 0.2);
             border-color: var(--accent-cyan);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.2);
         }
 
-        .surah-name {
-            font-family: 'Noto Serif Bengali', serif;
-            font-weight: 600;
-            color: #ffffff;
+        .verse-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 210, 255, 0.15);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
         }
 
-        .surah-no {
-            font-size: 12px;
+        .verse-num {
             color: var(--accent-gold);
-            background: rgba(255, 215, 0, 0.1);
-            padding: 2px 8px;
-            border-radius: 10px;
-        }
-
-        .surah-details-box {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            margin-top: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
 
         .arabic-text {
-            font-size: 22px;
-            color: var(--accent-gold-light);
-            text-align: center;
-            margin-bottom: 15px;
-            line-height: 2;
+            font-family: 'Amiri', serif;
+            font-size: 24px;
+            color: #ffffff;
+            text-align: right;
+            direction: rtl;
+            line-height: 1.8;
+            margin-bottom: 8px;
         }
 
-        @keyframes modalSlide {
-            from { opacity: 0; transform: translateY(-30px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+        .pronunciation {
+            color: var(--accent-cyan);
+            font-size: 14px;
+            margin-bottom: 5px;
+            font-style: italic;
         }
 
-        /* 3D Gold Footer Section */
+        .translation {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 40px 0 15px;
-            margin-top: 60px;
-            font-family: 'Poppins', sans-serif;
-            border-top: 1px solid rgba(0, 210, 255, 0.15);
-            position: relative;
-        }
-
-        .footer-text {
-            font-family: 'Cinzel', serif;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #d1d5db;
-            display: inline-block;
+            padding: 25px 0 10px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(0, 210, 255, 0.2);
         }
 
         .designer-name {
             font-family: 'Cinzel', serif;
-            font-weight: 900;
-            font-size: 24px;
-            letter-spacing: 2px;
-            margin-left: 6px;
-            display: inline-block;
-            background: linear-gradient(
-                180deg, 
-                #ffffff 0%, 
-                #fff2a1 20%, 
-                #ffd700 45%, 
-                #caa000 60%, 
-                #ffd700 80%, 
-                #8a6400 100%
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 0px #4d3800)
-                    drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8))
-                    drop-shadow(0 0 12px rgba(255, 215, 0, 0.4));
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-
-        .designer-name:hover {
-            transform: translateY(-2px) scale(1.05);
-            filter: drop-shadow(0 3px 0px #4d3800)
-                    drop-shadow(0 6px 10px rgba(0, 0, 0, 0.9))
-                    drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+            font-weight: 800;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Profile Header -->
+    <!-- Header Panel -->
     <div class="profile-header">
         <div class="profile-img-wrapper">
             <img src="anik.jpg" alt="AR Anik" class="profile-img">
@@ -417,7 +344,7 @@
         </div>
     </div>
 
-    <!-- Cards Container -->
+    <!-- 3D Glass Cards Grid -->
     <div class="card-grid">
         <div class="card" onclick="openSurahListModal()">
             <span class="card-number">01</span>
@@ -448,114 +375,122 @@
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <div id="backButtonContainer"></div>
         <h2 id="modalTitle" class="modal-title"></h2>
-        <div id="modalBody" class="modal-body"></div>
+        <div id="modalBody"></div>
     </div>
 </div>
 
 <!-- Footer -->
 <footer>
-    <span class="footer-text">Designed by</span> 
-    <span class="designer-name">MAMUN</span>
+    Designed by <span class="designer-name">Mamun</span>
 </footer>
 
 <script>
-    // Surah Data Store
+    // Complete Surah Data with Ayah, Pronunciation and Meaning
     const surahData = [
         {
             id: 1,
             name: "সূরা আল-ফাতিহা",
-            arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
-            meaning: "শুরু করছি আল্লাহর নামে যিনি পরম করুণাময়, অতি দয়ালু।",
-            tafsir: "সূরা আল-ফাতিহা কুরআনের প্রথম সূরা। একে 'উম্মুল কুরআন' বা কুরআনের মা বলা হয়। এটি মানবজীবনের সমস্ত প্রার্থনার সারসংক্ষেপ। এতে আল্লাহর প্রশংসা, সার্বভৌমত্ব এবং সঠিক পথে চলার হিদায়াত প্রার্থনা করা হয়েছে।"
+            verses: [
+                { num: 1, ar: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ", en: "বিসমিল্লাহির রাহমানির রাহিম", bn: "পরম করুণাময় অতি দয়ালু আল্লাহর নামে শুরু করছি।" },
+                { num: 2, ar: "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ", en: "আলহামদু লিল্লাহি রাব্বিল আলামিন", bn: "সমস্ত প্রশংসা একমাত্র আল্লাহর জন্য, যিনি সকল সৃষ্টির পালনকর্তা।" },
+                { num: 3, ar: "ٱلرَّحْمَٰنِ ٱلرَّحِيمِ", en: "আর-রাহমানির রাহিম", bn: "যিনি পরম করুণাময় ও অতি দয়ালু।" },
+                { num: 4, ar: "مَٰلِكِ يَوْمِ ٱلدِّينِ", en: "মালিকি ইয়াওমিদ্দীন", bn: "যিনি বিচার দিনের মালিক।" },
+                { num: 5, ar: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ", en: "ইয়্যাকা না'বুদু ওয়া ইয়্যাকা নাস্তা'ইন", bn: "আমরা কেবল তোমারই ইবাদত করি এবং কেবল তোমারই কাছে সাহায্য চাই।" },
+                { num: 6, ar: "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ", en: "ইহদিনাস সিরাতাল মুস্তাকীম", bn: "আমাদেরকে সহজ-সঠিক পথ দেখাও।" },
+                { num: 7, ar: "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ", en: "সিরাতাল্লাজিনা আন'আমতা আলাইহিম গাইরিল মাগদুবি আলাইহিম ওয়ালাদ্দাল্লীন", bn: "তাদের পথ, যাদেরকে তুমি নেয়ামত দান করেছ; তাদের পথ নয় যাদের ওপর তোমার গজব নাজিল হয়েছে এবং যারা পথভ্রষ্ট হয়েছে।" }
+            ]
         },
         {
             id: 112,
             name: "সূরা আল-ইখলাস",
-            arabic: "قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ",
-            meaning: "বলুন, তিনি আল্লাহ, এক-অদ্বিতীয়। আল্লাহ কারো মুখাপেক্ষী নন, সকলেই তাঁর মুখাপেক্ষী।",
-            tafsir: "এটি তাওহীদ বা আল্লাহর একত্ববাদের মূল শিক্ষা বহন করে। হাদিস অনুযায়ী এই সূরা তিনবার পাঠ করলে পুরো এক খতম কুরআন তিলাওয়াতের সওয়াব অর্জিত হয়।"
+            verses: [
+                { num: 1, ar: "قُلْ هُوَ ٱللَّهُ أَحَدٌ", en: "কুল হুওয়াল্লাহু আহাদ", bn: "বলুন, তিনি আল্লাহ, এক-অদ্বিতীয়।" },
+                { num: 2, ar: "ٱللَّهُ ٱلصَّمَدُ", en: "আল্লাহুস সামাদ", bn: "আল্লাহ অমুখাপেক্ষী (সবাই তাঁর মুখাপেক্ষী)।" },
+                { num: 3, ar: "لَمْ يَلِدْ وَلَمْ يُولَدْ", en: "লাম ইয়ালিদ ওয়া লাম ইউলাদ", bn: "তিনি কাউকে জন্ম দেননি এবং তাঁকেও জন্ম দেওয়া হয়নি।" },
+                { num: 4, ar: "وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌ", en: "ওয়া লাম ইয়াকুল লাহু কুফুওয়ান আহাদ", bn: "এবং তাঁর সমতুল্য কেউই নেই।" }
+            ]
         },
         {
             id: 113,
             name: "সূরা আল-ফালাক",
-            arabic: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ",
-            meaning: "বলুন, আমি আশ্রয় প্রার্থনা করছি ভোরের রবের।",
-            tafsir: "এই সূরায় সমস্ত সৃষ্টিজীবনের অনিষ্ট, অন্ধকারের বিপদ, হিংসুকদের হিংসা এবং যাদু-টোনার থেকে আল্লাহর নিকট পানাহ চাওয়ার নির্দেশ দেওয়া হয়েছে।"
+            verses: [
+                { num: 1, ar: "قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ", en: "কুল আউজু বিরাব্বিল ফালাক", bn: "বলুন, আমি আশ্রয় প্রার্থনা করছি ভোরের রবের।" },
+                { num: 2, ar: "مِن شَرِّ مَا خَلَقَ", en: "মিন শাররি মা খালাক", bn: "তিনি যা সৃষ্টি করেছেন তার অনিষ্ট হতে।" },
+                { num: 3, ar: "وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ", en: "ওয়া মিন শাররি গাসিকিন ইজা ওয়াকাব", bn: "এবং রাতের অন্ধকারের অনিষ্ট হতে যখন তা ছেয়ে যায়।" },
+                { num: 4, ar: "وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ", en: "ওয়া মিন শাররিন নাফফাসাতি ফিল উকাদ", bn: "এবং গ্রন্থিতে ফুঁৎকারদানকারী জাদুকরদের অনিষ্ট হতে।" },
+                { num: 5, ar: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ", en: "ওয়া মিন শাররি হাসিদিন ইজা হাসাদ", bn: "এবং হিংসুকের অনিষ্ট হতে যখন সে হিংসা করে।" }
+            ]
         },
         {
             id: 114,
             name: "সূরা আন-নাস",
-            arabic: "قُلْ أَعُوذُ بِرَبِّ النَّاسِ",
-            meaning: "বলুন, আমি আশ্রয় প্রার্থনা করছি মানুষের রবের।",
-            tafsir: "এই সূরায় শয়তানের কুমন্ত্রণা ও ক্ষতিকর প্রভাব থেকে আত্মরক্ষার জন্য মহান আল্লাহর দরবারে সাহায্য চাওয়ার শিক্ষা রয়েছে।"
+            verses: [
+                { num: 1, ar: "قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ", en: "কুল আউজু বিরাব্বিন নাস", bn: "বলুন, আমি আশ্রয় প্রার্থনা করছি মানুষের রবের।" },
+                { num: 2, ar: "مَلِكِ ٱلنَّاسِ", en: "মালিকিন নাস", bn: "মানুষের মালিকের।" },
+                { num: 3, ar: "إِلَٰهِ ٱلنَّاسِ", en: "ইলাহিন নাস", bn: "মানুষের মাবুদের।" },
+                { num: 4, ar: "مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ", en: "মিন শাররিল ওয়াসওয়াসিল খান্নাস", bn: "আত্মগোপনকারী কুমন্ত্রণাদাতার অনিষ্ট হতে।" },
+                { num: 5, ar: "ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ", en: "আল্লাজি ইউওয়াসউিসু ফি সুদুরিন নাস", bn: "যে মানুষের অন্তরে কুমন্ত্রণা দেয়।" },
+                { num: 6, ar: "مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ", en: "মিনাল জিন্নাতি ওয়ান নাস", bn: "জিন এবং মানুষের মধ্য হতে।" }
+            ]
         },
         {
             id: 108,
             name: "সূরা আল-কাওসার",
-            arabic: "إِنَّا أَعْطَيْنَاكَ الْكَوْثَارَ",
-            meaning: "নিশ্চয়ই আমি আপনাকে কাওসার (প্রচুর কল্যাণ) দান করেছি।",
-            tafsir: "এটি পবিত্র কুরআনের সবচেয়ে ছোট সূরা। এতে বিশ্বনবী (সাঃ)-কে হাউজে কাওসারের সুসংবাদ দেওয়া হয়েছে এবং আল্লাহর উদ্দেশ্যে সালাত আদায় ও কুরবানী করার নির্দেশ রয়েছে।"
-        },
-        {
-            id: 67,
-            name: "সূরা আল-মুলক (ব্যাখ্যা সংক্ষেপ)",
-            arabic: "تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ",
-            meaning: "মহিমান্বিত তিনি, যাঁর হাতে রাজত্ব।",
-            tafsir: "নিয়মিত রাতে এই সূরা তিলাওয়াত করলে কবরের আজাব থেকে মুক্তি পাওয়া যায় বলে হাদিসে বর্ণিত হয়েছে।"
+            verses: [
+                { num: 1, ar: "إِنَّآ أَعْطَيْنَٰكَ ٱلْكَوْثَرَ", en: "ইন্না আ'তাইনাকাল কাওসার", bn: "নিশ্চয়ই আমি আপনাকে কাওসার (প্রচুর কল্যাণ) দান করেছি।" },
+                { num: 2, ar: "فَصَلِّ لِرَبِّكَ وَٱنْحَرْ", en: "ফাসাল্লি লিরাব্বিকা ওয়ানহার", bn: "অতএব আপনার রবের উদ্দেশ্যে সালাত আদায় করুন এবং কুরবানী করুন।" },
+                { num: 3, ar: "إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ", en: "ইন্না শানিআকা হুওয়াল আবতার", bn: "নিশ্চয়ই আপনার শত্রু ও বিদ্বেষ পোষণকারীই নির্বংশ।" }
+            ]
         }
     ];
 
-    // Open General Modal
     function openModal(title, content) {
         document.getElementById('backButtonContainer').innerHTML = '';
         document.getElementById('modalTitle').innerText = title;
-        document.getElementById('modalBody').innerHTML = `<p>${content}</p>`;
+        document.getElementById('modalBody').innerHTML = `<p style="line-height:1.8;">${content}</p>`;
         document.getElementById('infoModal').style.display = 'flex';
     }
 
-    // Open Surah List Modal
     function openSurahListModal() {
         document.getElementById('backButtonContainer').innerHTML = '';
         document.getElementById('modalTitle').innerText = "সূরা ও ব্যাখ্যা - তালিকা";
         
-        let surahListHTML = '<p style="color: var(--text-muted); margin-bottom: 15px;">নিচের যেকোনো সূরায় ক্লিক করে বিস্তারিত বিবরণ দেখুন:</p>';
-        surahListHTML += '<div class="surah-grid">';
-        
+        let surahListHTML = '<div class="surah-grid">';
         surahData.forEach(surah => {
             surahListHTML += `
                 <div class="surah-item" onclick="openSurahDetail(${surah.id})">
-                    <span class="surah-name">${surah.name}</span>
-                    <span class="surah-no">সূরা #${surah.id}</span>
+                    <span>${surah.name}</span>
+                    <span style="color:var(--accent-gold); font-size:12px;">#${surah.id}</span>
                 </div>
             `;
         });
-        
         surahListHTML += '</div>';
         
         document.getElementById('modalBody').innerHTML = surahListHTML;
         document.getElementById('infoModal').style.display = 'flex';
     }
 
-    // Open Individual Surah Details
     function openSurahDetail(surahId) {
         const surah = surahData.find(item => item.id === surahId);
         if (!surah) return;
 
-        // Back Button
         document.getElementById('backButtonContainer').innerHTML = `
             <span class="back-btn" onclick="openSurahListModal()">← পূর্বের তালিকায় ফিরে যান</span>
         `;
         
         document.getElementById('modalTitle').innerText = surah.name;
         
-        let detailHTML = `
-            <div class="surah-details-box">
-                <div class="arabic-text">${surah.arabic}</div>
-                <p style="color: var(--accent-cyan); margin-bottom: 10px;"><strong>অনুবাদ:</strong> ${surah.meaning}</p>
-                <hr style="border-color: rgba(0, 210, 255, 0.2); margin: 15px 0;">
-                <p style="line-height: 1.8;"><strong>তাফসীর ও ব্যাখ্যা:</strong><br>${surah.tafsir}</p>
-            </div>
-        `;
+        let detailHTML = '';
+        surah.verses.forEach(v => {
+            detailHTML += `
+                <div class="verse-box">
+                    <div class="verse-num">আয়াত ${v.num}</div>
+                    <div class="arabic-text">${v.ar}</div>
+                    <div class="pronunciation"><strong>উচ্চারণ:</strong> ${v.en}</div>
+                    <div class="translation"><strong>অর্থ:</strong> ${v.bn}</div>
+                </div>
+            `;
+        });
         
         document.getElementById('modalBody').innerHTML = detailHTML;
     }
