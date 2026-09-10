@@ -17,6 +17,7 @@
             --accent-gold: #ffd700;
             --gold-gradient: linear-gradient(135deg, #fff3a1 0%, #ffd700 50%, #b8860b 100%);
             --silver-gradient: linear-gradient(145deg, #e6ecf0 0%, #9cb1c9 50%, #465a6e 100%);
+            --modal-bg: linear-gradient(165deg, rgba(8, 28, 42, 0.95) 0%, rgba(3, 15, 25, 0.98) 100%);
             --text-light: #e0f2fe;
             --text-muted: #8bb1c7;
         }
@@ -130,10 +131,11 @@
         }
 
         .author-phone {
-            font-size: 12px;
-            color: var(--text-muted);
-            letter-spacing: 1px;
+            font-size: 13px;
+            color: var(--accent-gold);
+            letter-spacing: 1.5px;
             font-weight: 600;
+            margin-top: 2px;
         }
 
         /* 3D Glass Cube Grid Section */
@@ -213,7 +215,7 @@
             padding: 0 5px;
         }
 
-        /* Modal UI Section */
+        /* Highly Professional & Beautiful Modal UI */
         .modal {
             display: none;
             position: fixed;
@@ -221,135 +223,181 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(2, 10, 18, 0.92);
-            backdrop-filter: blur(15px);
+            background-color: rgba(2, 6, 12, 0.85);
+            backdrop-filter: blur(20px);
             justify-content: center;
             align-items: center;
             padding: 20px;
             z-index: 1000;
+            animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .modal-content {
-            background: linear-gradient(145deg, rgba(12, 32, 48, 0.98), rgba(4, 14, 24, 0.98));
-            padding: 30px;
-            border-radius: 28px;
+            background: var(--modal-bg);
+            padding: 35px 30px;
+            border-radius: 30px;
             max-width: 850px;
             width: 100%;
             max-height: 85vh;
             overflow-y: auto;
             position: relative;
-            border: 1px solid rgba(0, 212, 255, 0.5);
-            box-shadow: 0 25px 60px rgba(0, 212, 255, 0.25);
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            box-shadow: 
+                0 30px 70px rgba(0, 0, 0, 0.9),
+                0 0 40px rgba(0, 212, 255, 0.2),
+                inset 0 1px 1px rgba(255, 255, 255, 0.2);
         }
 
         .modal-content::-webkit-scrollbar { width: 6px; }
-        .modal-content::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 10px; }
+        .modal-content::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--accent-cyan), #006699); border-radius: 10px; }
 
         .close-btn {
             position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 30px;
+            top: 20px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s ease;
         }
-        .close-btn:hover { color: var(--accent-cyan); }
+        .close-btn:hover { 
+            background: rgba(255, 0, 85, 0.2);
+            color: #ff4d6d;
+            border-color: rgba(255, 0, 85, 0.4);
+        }
 
         .back-btn {
-            display: inline-block;
-            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 20px;
             color: var(--accent-cyan);
             cursor: pointer;
             font-size: 13px;
-            border: 1px solid rgba(0, 212, 255, 0.4);
-            padding: 6px 16px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 6px 18px;
             border-radius: 20px;
-            background: rgba(0, 212, 255, 0.1);
-            transition: 0.2s;
+            background: rgba(0, 212, 255, 0.08);
+            transition: all 0.2s ease;
         }
-        .back-btn:hover { background: rgba(0, 212, 255, 0.25); }
+        .back-btn:hover { background: rgba(0, 212, 255, 0.2); transform: translateX(-2px); }
 
         .modal-title {
-            color: var(--accent-cyan);
+            color: #ffffff;
             font-family: 'Noto Serif Bengali', serif;
-            font-size: 24px;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 22px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .search-box {
             width: 100%;
-            padding: 12px 18px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 12px;
+            padding: 14px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 16px;
             color: #fff;
             font-size: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             outline: none;
+            transition: 0.3s;
         }
-        .search-box:focus { border-color: var(--accent-cyan); background: rgba(255, 255, 255, 0.1); }
+        .search-box:focus { 
+            border-color: var(--accent-cyan); 
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+            background: rgba(0, 0, 0, 0.5);
+        }
 
         .surah-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 14px;
         }
 
         .surah-item {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            padding: 14px;
-            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            padding: 16px;
+            border-radius: 16px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.25s ease;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .surah-item:hover { background: rgba(0, 212, 255, 0.2); border-color: var(--accent-cyan); }
+        .surah-item:hover { 
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 80, 120, 0.4));
+            border-color: var(--accent-cyan);
+            transform: translateY(-3px);
+        }
 
         .verse-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 212, 255, 0.15);
-            padding: 18px;
-            border-radius: 16px;
-            margin-bottom: 15px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            padding: 22px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.05);
         }
 
         .verse-num {
             color: var(--accent-gold);
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
         }
 
         .arabic-text {
             font-family: 'Amiri', serif;
-            font-size: 26px;
+            font-size: 28px;
             color: #ffffff;
             text-align: right;
             direction: rtl;
-            line-height: 2;
-            margin-bottom: 10px;
+            line-height: 2.2;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .translation { color: var(--text-light); font-size: 15px; line-height: 1.7; }
+        .translation { color: #d0e7f7; font-size: 15px; line-height: 1.8; }
 
         .action-btn {
             background: linear-gradient(135deg, #00d2ff, #0088cc);
             border: none;
-            padding: 10px 20px;
-            border-radius: 12px;
+            padding: 12px 24px;
+            border-radius: 14px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 700;
             color: #040e15;
             margin-top: 10px;
-            transition: 0.2s;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
         }
-        .action-btn:hover { filter: brightness(1.2); }
+        .action-btn:hover { 
+            filter: brightness(1.15); 
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.5);
+        }
 
         /* Footer Frame */
         footer {
@@ -384,12 +432,12 @@
             <h1 class="website-title">আলোর পথে</h1>
             <div class="author-info">
                 <div class="author-name">AR Anik</div>
-                <div class="author-phone">020-2367-7989</div>
+                <div class="author-phone">01923-968643</div>
             </div>
         </div>
     </div>
 
-    <!-- 3D Glass Cards Grid (Exact 5 Cards as in Reference) -->
+    <!-- 3D Glass Cards Grid (Exact 5 Cards) -->
     <div class="card-grid">
         <!-- Card 01 -->
         <div class="card" onclick="openSurahListModal()">
@@ -449,7 +497,7 @@
     }
 
     // ---------------------------------------------------------
-    // CARD 1: SURAH & TAFSIR (API: Al Quran Cloud)
+    // CARD 1: SURAH & TAFSIR
     // ---------------------------------------------------------
     async function openSurahListModal() {
         openModal("সূরা তালিকা (১১৪টি সূরা)", "<p style='text-align:center;'>সূরা তালিকা লোড করা হচ্ছে...</p>");
@@ -473,7 +521,7 @@
 
     function renderSurahGrid(surahs) {
         let html = `
-            <input type="text" class="search-box" id="surahSearch" placeholder="সূরার নাম লিখে খুঁজুন..." onkeyup="filterSurahs()">
+            <input type="text" class="search-box" id="surahSearch" placeholder="সূরার নাম বা নম্বর লিখে খুঁজুন..." onkeyup="filterSurahs()">
             <div class="surah-grid" id="surahContainer">
         `;
         surahs.forEach(surah => {
@@ -534,12 +582,12 @@
     }
 
     // ---------------------------------------------------------
-    // CARD 2: HADITH SHARIF (API: FawazAhmed Hadith CDN)
+    // CARD 2: HADITH SHARIF
     // ---------------------------------------------------------
     async function openHadithModal() {
         openModal("সহিহ হাদিস শরিফ", "<p style='text-align:center;'>হাদিস নির্বাচন করুন...</p>");
         let html = `
-            <div style="display:flex; gap:10px; margin-bottom:15px; flex-wrap:wrap;">
+            <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
                 <button class="action-btn" onclick="fetchRandomHadith('bukhari')">সহিহ বুখারি</button>
                 <button class="action-btn" onclick="fetchRandomHadith('muslim')">সহিহ মুসলিম</button>
                 <button class="action-btn" onclick="fetchRandomHadith('abudawud')">আবু দাউদ</button>
@@ -577,7 +625,7 @@
     }
 
     // ---------------------------------------------------------
-    // CARD 3: SALAT & SAWM WITH PRAYER TIMES API
+    // CARD 3: SALAT & SAWM
     // ---------------------------------------------------------
     async function openSalatModal() {
         openModal("সালাত ও সিয়ামের সময়সূচী ও ব্যাখ্যা", "<p style='text-align:center;'>আজকের নামাজের সময়সূচী লোড করা হচ্ছে...</p>");
@@ -588,8 +636,8 @@
 
             let html = `
                 <div class="verse-box" style="margin-bottom:20px;">
-                    <div class="verse-num" style="font-size:15px;">আজকের সালাতের সময়সূচী (ঢাকা ও আশপাশ):</div>
-                    <p style="line-height:1.8;">
+                    <div class="verse-num">আজকের সালাতের সময়সূচী (ঢাকা ও আশপাশ):</div>
+                    <p style="line-height:2; font-size:15px;">
                         • <strong>ফজর:</strong> ${t.Fajr} AM<br>
                         • <strong>যোহোর:</strong> ${t.Dhuhr} PM<br>
                         • <strong>আসর:</strong> ${t.Asr} PM<br>
@@ -613,7 +661,7 @@
     }
 
     // ---------------------------------------------------------
-    // CARD 4: ISLAM'S IMPORTANCE IN HUMAN LIFE
+    // CARD 4: ISLAM'S IMPORTANCE
     // ---------------------------------------------------------
     function openIslamImportanceModal() {
         let html = `
@@ -639,7 +687,7 @@
     }
 
     // ---------------------------------------------------------
-    // CARD 5: MY LIFE (AMAR JIBON)
+    // CARD 5: MY LIFE
     // ---------------------------------------------------------
     function openMyLifeModal() {
         let html = `
@@ -651,7 +699,7 @@
             </div>
             <div class="verse-box">
                 <div class="verse-num">জীবনের সফলতার চাবিকাঠি:</div>
-                <div class="translation">
+                <div class="translation" style="line-height:2;">
                     • সঠিক ঈমান আকিদা রক্ষা করা।<br>
                     • দৈনিক পাঁচ ওয়াক্ত সালাত পাবন্দির সাথে আদায় করা।<br>
                     • কুরআন তিলওয়াত ও দৈনন্দিন জিকির সুন্নাহর আমল করা।<br>
