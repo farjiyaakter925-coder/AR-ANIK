@@ -91,6 +91,14 @@
             letter-spacing: 0.5px;
         }
 
+        .author-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
         .author-name {
             color: var(--accent-color);
             font-family: 'Cinzel', serif;
@@ -98,6 +106,15 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
+        }
+
+        .author-phone {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: var(--text-muted);
+            background: rgba(13, 92, 70, 0.08);
+            padding: 3px 10px;
+            border-radius: 12px;
         }
 
         /* Card Section */
@@ -116,7 +133,6 @@
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             border: 1px solid #eef2f0;
-            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -238,8 +254,11 @@
         <div class="profile-img-wrapper">
             <img src="anik.jpg" alt="AR Anik" class="profile-img">
         </div>
-        <h1 class="website-title"> আলোর পথে</h1>
-        <p class="author-name">AR Anik<b>01923-968643</b></p>
+        <h1 class="website-title">আলোর পথে</h1>
+        <div class="author-info">
+            <span class="author-name">AR Anik</span>
+            <span class="author-phone">01923-968643</span>
+        </div>
     </div>
 
     <!-- Cards Container -->
@@ -252,11 +271,11 @@
             <span class="card-number">02</span>
             <h3>হাদিস শরিফ</h3>
         </div>
-        <div class="card" onclick="openModal('সালাত ও সিয়ামের ব্যাখ্যা', 'সালাত (নামাজ) এবং সিয়াম (রোজা)-এর সঠিক নিয়ম ও ফজিলত সংক্রান্ত বিষয়াবলী।')">
+        <div class="card" onclick="openModal('সালাত ও সিয়ামের ব্যাখ্যা', 'সালাত (নামাজ) এবং সিয়াম (রোজা)-এর সঠিক নিয়ম ও ফজিলত সংক্রান্ত বিষয়াবলী।')">
             <span class="card-number">03</span>
             <h3>সালাত ও সিয়ামের ব্যাখ্যা</h3>
         </div>
-        <div class="card" onclick="openModal('মানব জীবনে ইসলামের গুরুত্ব', 'দৈনন্দিন জীবনে ইসলামী আদর্শের প্রয়োগ ও গুরুত্ব।')">
+        <div class="card" onclick="openModal('মানব জীবনে ইসলামের গুরুত্ব', 'দৈনন্দিন জীবনে ইসলামী আদর্শের প্রয়োগ ও গুরুত্ব।')">
             <span class="card-number">04</span>
             <h3>মানব জীবনে ইসলামের গুরুত্ব</h3>
         </div>
@@ -292,11 +311,18 @@
         document.getElementById('infoModal').style.display = 'none';
     }
 
-    // Modal-er baire click korle modal bondho hobe
+    // Close modal when clicking outside of it
     window.onclick = function(event) {
         var modal = document.getElementById('infoModal');
-        if (event.target == modal) {
+        if (event.target === modal) {
             modal.style.display = 'none';
+        }
+    }
+
+    // Close modal on Escape key press
+    window.onkeydown = function(event) {
+        if (event.key === "Escape") {
+            closeModal();
         }
     }
 </script>
