@@ -151,8 +151,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            
-            /* 3D Shadow & Smooth Hover */
             transform-style: preserve-3d;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 
@@ -216,11 +214,13 @@
         }
 
         .modal-content {
-            background: linear-gradient(135deg, rgba(20, 40, 60, 0.7), rgba(5, 15, 25, 0.8));
-            padding: 40px;
+            background: linear-gradient(135deg, rgba(20, 40, 60, 0.85), rgba(5, 15, 25, 0.9));
+            padding: 35px;
             border-radius: 28px;
-            max-width: 550px;
+            max-width: 650px;
             width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
             position: relative;
             backdrop-filter: blur(25px);
             border: 1px solid rgba(0, 210, 255, 0.5);
@@ -229,6 +229,15 @@
                 0 25px 60px rgba(0, 210, 255, 0.25),
                 inset 0 1px 3px rgba(255, 255, 255, 0.3);
             animation: modalSlide 0.3s ease-out;
+        }
+
+        /* Modal Custom Scrollbar */
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: rgba(0, 210, 255, 0.4);
+            border-radius: 10px;
         }
 
         .close-btn {
@@ -244,6 +253,24 @@
 
         .close-btn:hover {
             color: var(--accent-cyan);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--accent-cyan);
+            cursor: pointer;
+            font-size: 14px;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 15px;
+            background: rgba(0, 210, 255, 0.08);
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 210, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
         }
 
         .modal-title {
@@ -262,12 +289,69 @@
             font-size: 16px;
         }
 
+        /* Surah List Interactive Style */
+        .surah-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .surah-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 12px 18px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .surah-item:hover {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: var(--accent-cyan);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .surah-name {
+            font-family: 'Noto Serif Bengali', serif;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .surah-no {
+            font-size: 12px;
+            color: var(--accent-gold);
+            background: rgba(255, 215, 0, 0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .surah-details-box {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 10px;
+        }
+
+        .arabic-text {
+            font-size: 22px;
+            color: var(--accent-gold-light);
+            text-align: center;
+            margin-bottom: 15px;
+            line-height: 2;
+        }
+
         @keyframes modalSlide {
             from { opacity: 0; transform: translateY(-30px) scale(0.95); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Advanced 3D Gold Footer Section */
+        /* 3D Gold Footer Section */
         footer {
             text-align: center;
             padding: 40px 0 15px;
@@ -293,8 +377,6 @@
             letter-spacing: 2px;
             margin-left: 6px;
             display: inline-block;
-            
-            /* 3D Metallic Gold Gradient */
             background: linear-gradient(
                 180deg, 
                 #ffffff 0%, 
@@ -306,12 +388,9 @@
             );
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            
-            /* Metallic Glow & 3D Shadow */
             filter: drop-shadow(0 2px 0px #4d3800)
                     drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8))
                     drop-shadow(0 0 12px rgba(255, 215, 0, 0.4));
-            
             transition: transform 0.3s ease, filter 0.3s ease;
         }
 
@@ -340,7 +419,7 @@
 
     <!-- Cards Container -->
     <div class="card-grid">
-        <div class="card" onclick="openModal('সূরা ও ব্যাখ্যা', 'এখানে বিস্তারিত সূরা ও তার তাফসীর যুক্ত করা হবে।')">
+        <div class="card" onclick="openSurahListModal()">
             <span class="card-number">01</span>
             <h3>সূরা ও ব্যাখ্যা</h3>
         </div>
@@ -367,8 +446,9 @@
 <div id="infoModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div id="backButtonContainer"></div>
         <h2 id="modalTitle" class="modal-title"></h2>
-        <p id="modalBody" class="modal-body"></p>
+        <div id="modalBody" class="modal-body"></div>
     </div>
 </div>
 
@@ -379,10 +459,105 @@
 </footer>
 
 <script>
+    // Surah Data Store
+    const surahData = [
+        {
+            id: 1,
+            name: "সূরা আল-ফাতিহা",
+            arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+            meaning: "শুরু করছি আল্লাহর নামে যিনি পরম করুণাময়, অতি দয়ালু।",
+            tafsir: "সূরা আল-ফাতিহা কুরআনের প্রথম সূরা। একে 'উম্মুল কুরআন' বা কুরআনের মা বলা হয়। এটি মানবজীবনের সমস্ত প্রার্থনার সারসংক্ষেপ। এতে আল্লাহর প্রশংসা, সার্বভৌমত্ব এবং সঠিক পথে চলার হিদায়াত প্রার্থনা করা হয়েছে।"
+        },
+        {
+            id: 112,
+            name: "সূরা আল-ইখলাস",
+            arabic: "قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ",
+            meaning: "বলুন, তিনি আল্লাহ, এক-অদ্বিতীয়। আল্লাহ কারো মুখাপেক্ষী নন, সকলেই তাঁর মুখাপেক্ষী।",
+            tafsir: "এটি তাওহীদ বা আল্লাহর একত্ববাদের মূল শিক্ষা বহন করে। হাদিস অনুযায়ী এই সূরা তিনবার পাঠ করলে পুরো এক খতম কুরআন তিলাওয়াতের সওয়াব অর্জিত হয়।"
+        },
+        {
+            id: 113,
+            name: "সূরা আল-ফালাক",
+            arabic: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ",
+            meaning: "বলুন, আমি আশ্রয় প্রার্থনা করছি ভোরের রবের।",
+            tafsir: "এই সূরায় সমস্ত সৃষ্টিজীবনের অনিষ্ট, অন্ধকারের বিপদ, হিংসুকদের হিংসা এবং যাদু-টোনার থেকে আল্লাহর নিকট পানাহ চাওয়ার নির্দেশ দেওয়া হয়েছে।"
+        },
+        {
+            id: 114,
+            name: "সূরা আন-নাস",
+            arabic: "قُلْ أَعُوذُ بِرَبِّ النَّاسِ",
+            meaning: "বলুন, আমি আশ্রয় প্রার্থনা করছি মানুষের রবের।",
+            tafsir: "এই সূরায় শয়তানের কুমন্ত্রণা ও ক্ষতিকর প্রভাব থেকে আত্মরক্ষার জন্য মহান আল্লাহর দরবারে সাহায্য চাওয়ার শিক্ষা রয়েছে।"
+        },
+        {
+            id: 108,
+            name: "সূরা আল-কাওসার",
+            arabic: "إِنَّا أَعْطَيْنَاكَ الْكَوْثَارَ",
+            meaning: "নিশ্চয়ই আমি আপনাকে কাওসার (প্রচুর কল্যাণ) দান করেছি।",
+            tafsir: "এটি পবিত্র কুরআনের সবচেয়ে ছোট সূরা। এতে বিশ্বনবী (সাঃ)-কে হাউজে কাওসারের সুসংবাদ দেওয়া হয়েছে এবং আল্লাহর উদ্দেশ্যে সালাত আদায় ও কুরবানী করার নির্দেশ রয়েছে।"
+        },
+        {
+            id: 67,
+            name: "সূরা আল-মুলক (ব্যাখ্যা সংক্ষেপ)",
+            arabic: "تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ",
+            meaning: "মহিমান্বিত তিনি, যাঁর হাতে রাজত্ব।",
+            tafsir: "নিয়মিত রাতে এই সূরা তিলাওয়াত করলে কবরের আজাব থেকে মুক্তি পাওয়া যায় বলে হাদিসে বর্ণিত হয়েছে।"
+        }
+    ];
+
+    // Open General Modal
     function openModal(title, content) {
+        document.getElementById('backButtonContainer').innerHTML = '';
         document.getElementById('modalTitle').innerText = title;
-        document.getElementById('modalBody').innerText = content;
+        document.getElementById('modalBody').innerHTML = `<p>${content}</p>`;
         document.getElementById('infoModal').style.display = 'flex';
+    }
+
+    // Open Surah List Modal
+    function openSurahListModal() {
+        document.getElementById('backButtonContainer').innerHTML = '';
+        document.getElementById('modalTitle').innerText = "সূরা ও ব্যাখ্যা - তালিকা";
+        
+        let surahListHTML = '<p style="color: var(--text-muted); margin-bottom: 15px;">নিচের যেকোনো সূরায় ক্লিক করে বিস্তারিত বিবরণ দেখুন:</p>';
+        surahListHTML += '<div class="surah-grid">';
+        
+        surahData.forEach(surah => {
+            surahListHTML += `
+                <div class="surah-item" onclick="openSurahDetail(${surah.id})">
+                    <span class="surah-name">${surah.name}</span>
+                    <span class="surah-no">সূরা #${surah.id}</span>
+                </div>
+            `;
+        });
+        
+        surahListHTML += '</div>';
+        
+        document.getElementById('modalBody').innerHTML = surahListHTML;
+        document.getElementById('infoModal').style.display = 'flex';
+    }
+
+    // Open Individual Surah Details
+    function openSurahDetail(surahId) {
+        const surah = surahData.find(item => item.id === surahId);
+        if (!surah) return;
+
+        // Back Button
+        document.getElementById('backButtonContainer').innerHTML = `
+            <span class="back-btn" onclick="openSurahListModal()">← পূর্বের তালিকায় ফিরে যান</span>
+        `;
+        
+        document.getElementById('modalTitle').innerText = surah.name;
+        
+        let detailHTML = `
+            <div class="surah-details-box">
+                <div class="arabic-text">${surah.arabic}</div>
+                <p style="color: var(--accent-cyan); margin-bottom: 10px;"><strong>অনুবাদ:</strong> ${surah.meaning}</p>
+                <hr style="border-color: rgba(0, 210, 255, 0.2); margin: 15px 0;">
+                <p style="line-height: 1.8;"><strong>তাফসীর ও ব্যাখ্যা:</strong><br>${surah.tafsir}</p>
+            </div>
+        `;
+        
+        document.getElementById('modalBody').innerHTML = detailHTML;
     }
 
     function closeModal() {
