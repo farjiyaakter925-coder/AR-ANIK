@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nay O Alor Pothe - AR Anik (3D Dark Theme)</title>
+    <title>Nay O Alor Pothe - AR Anik (Ultra Glassy 3D)</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Serif+Bengali:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Serif+Bengali:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #071521;
-            --card-bg: linear-gradient(135deg, rgba(20, 45, 68, 0.7), rgba(8, 25, 40, 0.8));
-            --border-glow: rgba(0, 210, 255, 0.3);
+            --bg-color: #030a12;
+            --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
+            --border-glow: rgba(0, 212, 255, 0.4);
             --accent-cyan: #00d2ff;
+            --accent-gold-light: #fff3a1;
             --accent-gold: #ffd700;
+            --accent-gold-dark: #b8860b;
             --text-light: #e0f2fe;
             --text-muted: #8bb1c7;
         }
@@ -29,14 +31,15 @@
         body {
             background: var(--bg-color);
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 150, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 210, 255, 0.12) 0%, transparent 40%);
+                radial-gradient(circle at 15% 20%, rgba(0, 180, 255, 0.18) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(0, 220, 255, 0.15) 0%, transparent 45%);
             color: var(--text-light);
             font-family: 'Poppins', 'Noto Serif Bengali', sans-serif;
             padding: 40px 20px;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .container {
@@ -46,23 +49,23 @@
             width: 100%;
         }
         
-        /* 3D Glass Header Section */
+        /* Ultra Glass Header Section */
         .profile-header {
             text-align: center;
-            background: var(--card-bg);
-            padding: 40px 20px;
-            border-radius: 24px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-glow);
+            background: var(--glass-bg);
+            padding: 45px 20px;
+            border-radius: 28px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+            border-right: 1px solid rgba(0, 210, 255, 0.2);
             box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.6),
-                inset 0 1px 1px rgba(255, 255, 255, 0.2),
-                inset 0 -2px 10px rgba(0, 210, 255, 0.1);
+                0 20px 50px rgba(0, 0, 0, 0.7),
+                inset 0 2px 2px rgba(255, 255, 255, 0.25),
+                inset 0 -2px 15px rgba(0, 210, 255, 0.15);
             margin-bottom: 50px;
             position: relative;
-            transform-style: preserve-3d;
-            perspective: 1000px;
         }
 
         .profile-img-wrapper {
@@ -72,25 +75,26 @@
         }
 
         .profile-img {
-            width: 130px;
-            height: 130px;
+            width: 135px;
+            height: 135px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-cyan);
-            padding: 4px;
-            background-color: rgba(10, 25, 40, 0.8);
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             box-shadow: 
-                0 0 25px rgba(0, 210, 255, 0.5),
-                inset 0 0 10px rgba(0, 0, 0, 0.8);
+                0 0 30px rgba(0, 210, 255, 0.6),
+                inset 0 0 15px rgba(0, 0, 0, 0.8);
         }
 
         .website-title {
             color: #ffffff;
             font-family: 'Noto Serif Bengali', serif;
-            font-size: 36px;
+            font-size: 38px;
             font-weight: 700;
             margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.7), 0 0 40px rgba(0, 210, 255, 0.3);
         }
 
         .author-info {
@@ -104,38 +108,42 @@
         .author-name {
             color: var(--accent-cyan);
             font-family: 'Cinzel', serif;
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            text-shadow: 0 0 8px rgba(0, 210, 255, 0.4);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
         }
 
         .author-phone {
             font-family: 'Poppins', sans-serif;
             font-size: 14px;
-            color: var(--accent-gold);
+            color: var(--accent-gold-light);
             background: rgba(255, 215, 0, 0.08);
             border: 1px solid rgba(255, 215, 0, 0.3);
             padding: 4px 14px;
             border-radius: 20px;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(5px);
         }
 
-        /* 3D Cards Grid Section */
+        /* 3D Glass Cards Grid Section */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            perspective: 1000px;
+            gap: 32px;
+            perspective: 1200px;
         }
 
         .card {
-            background: var(--card-bg);
-            padding: 35px 25px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-glow);
+            background: var(--glass-bg);
+            padding: 40px 25px;
+            border-radius: 24px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
             cursor: pointer;
             position: relative;
@@ -144,38 +152,40 @@
             justify-content: center;
             align-items: center;
             
-            /* 3D Shadow & Transform */
+            /* 3D Shadow & Smooth Hover */
             transform-style: preserve-3d;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.5),
-                inset 0 1px 1px rgba(255, 255, 255, 0.15);
+                0 15px 35px rgba(0, 0, 0, 0.6),
+                inset 0 1px 2px rgba(255, 255, 255, 0.2);
         }
 
         .card:hover {
-            transform: translateY(-12px) rotateX(8deg) rotateY(-3deg);
-            border-color: rgba(0, 210, 255, 0.8);
+            transform: translateY(-12px) rotateX(8deg) rotateY(-4deg) scale(1.02);
+            border-color: rgba(0, 210, 255, 0.7);
             box-shadow: 
-                0 25px 45px rgba(0, 210, 255, 0.25),
-                0 0 20px rgba(0, 210, 255, 0.2),
-                inset 0 1px 2px rgba(255, 255, 255, 0.3);
+                0 25px 50px rgba(0, 210, 255, 0.3),
+                0 0 25px rgba(0, 210, 255, 0.25),
+                inset 0 2px 4px rgba(255, 255, 255, 0.4);
         }
 
-        /* 3D Gold Floating Badge */
+        /* 3D Gold Badge */
         .card-number {
             position: absolute;
             top: -18px;
             font-family: 'Cinzel', serif;
             font-size: 14px;
             color: #1a0f00;
-            background: linear-gradient(135deg, #ffd700, #ffaa00);
-            font-weight: 700;
-            padding: 4px 16px;
+            background: linear-gradient(135deg, #fff3a1 0%, #ffd700 50%, #b8860b 100%);
+            font-weight: 800;
+            padding: 5px 18px;
             border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 
-                0 5px 15px rgba(255, 215, 0, 0.4),
-                inset 0 1px 1px rgba(255, 255, 255, 0.6);
-            transform: translateZ(20px);
+                0 6px 15px rgba(0, 0, 0, 0.5),
+                0 0 10px rgba(255, 215, 0, 0.5),
+                inset 0 1px 2px #ffffff;
+            transform: translateZ(25px);
         }
 
         .card h3 {
@@ -185,11 +195,11 @@
             font-weight: 600;
             line-height: 1.4;
             margin-top: 10px;
-            transform: translateZ(30px);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            transform: translateZ(35px);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
         }
 
-        /* 3D Glass Modal Section */
+        /* Glass Modal Section */
         .modal {
             display: none;
             position: fixed;
@@ -197,8 +207,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(3, 10, 18, 0.8);
-            backdrop-filter: blur(8px);
+            background-color: rgba(2, 6, 12, 0.85);
+            backdrop-filter: blur(12px);
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -206,16 +216,18 @@
         }
 
         .modal-content {
-            background: linear-gradient(135deg, rgba(15, 35, 55, 0.95), rgba(5, 18, 30, 0.95));
+            background: linear-gradient(135deg, rgba(20, 40, 60, 0.7), rgba(5, 15, 25, 0.8));
             padding: 40px;
-            border-radius: 24px;
+            border-radius: 28px;
             max-width: 550px;
             width: 100%;
             position: relative;
-            border: 1px solid var(--accent-cyan);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 
-                0 20px 50px rgba(0, 210, 255, 0.2),
-                inset 0 1px 2px rgba(255, 255, 255, 0.2);
+                0 25px 60px rgba(0, 210, 255, 0.25),
+                inset 0 1px 3px rgba(255, 255, 255, 0.3);
             animation: modalSlide 0.3s ease-out;
         }
 
@@ -241,7 +253,7 @@
             margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(0, 210, 255, 0.3);
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+            text-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
         }
 
         .modal-body {
@@ -255,23 +267,59 @@
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Footer Section */
+        /* Advanced 3D Gold Footer Section */
         footer {
             text-align: center;
-            padding: 30px 0 10px;
-            margin-top: 50px;
-            color: var(--text-muted);
-            font-size: 14px;
+            padding: 40px 0 15px;
+            margin-top: 60px;
             font-family: 'Poppins', sans-serif;
-            border-top: 1px solid rgba(0, 210, 255, 0.1);
+            border-top: 1px solid rgba(0, 210, 255, 0.15);
+            position: relative;
         }
 
-        footer .designer-name {
+        .footer-text {
             font-family: 'Cinzel', serif;
+            font-size: 18px;
             font-weight: 700;
-            color: var(--accent-cyan);
-            letter-spacing: 1px;
-            text-shadow: 0 0 8px rgba(0, 210, 255, 0.4);
+            letter-spacing: 2px;
+            color: #d1d5db;
+            display: inline-block;
+        }
+
+        .designer-name {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin-left: 6px;
+            display: inline-block;
+            
+            /* 3D Metallic Gold Gradient */
+            background: linear-gradient(
+                180deg, 
+                #ffffff 0%, 
+                #fff2a1 20%, 
+                #ffd700 45%, 
+                #caa000 60%, 
+                #ffd700 80%, 
+                #8a6400 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            /* Metallic Glow & 3D Shadow */
+            filter: drop-shadow(0 2px 0px #4d3800)
+                    drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8))
+                    drop-shadow(0 0 12px rgba(255, 215, 0, 0.4));
+            
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .designer-name:hover {
+            transform: translateY(-2px) scale(1.05);
+            filter: drop-shadow(0 3px 0px #4d3800)
+                    drop-shadow(0 6px 10px rgba(0, 0, 0, 0.9))
+                    drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
         }
     </style>
 </head>
@@ -326,7 +374,8 @@
 
 <!-- Footer -->
 <footer>
-    Designed by <span class="designer-name">Mamun</span>
+    <span class="footer-text">Designed by</span> 
+    <span class="designer-name">MAMUN</span>
 </footer>
 
 <script>
@@ -340,7 +389,6 @@
         document.getElementById('infoModal').style.display = 'none';
     }
 
-    // Modal-er baire click korle modal bondho hobe
     window.onclick = function(event) {
         var modal = document.getElementById('infoModal');
         if (event.target == modal) {
@@ -348,7 +396,6 @@
         }
     }
 
-    // Keyboard-er Escape button chaple modal bondho hobe
     window.onkeydown = function(event) {
         if (event.key === "Escape") {
             closeModal();
