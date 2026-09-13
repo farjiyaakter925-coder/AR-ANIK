@@ -215,7 +215,7 @@
             padding: 0 5px;
         }
 
-        /* Highly Professional & Beautiful Modal UI */
+        /* Modal UI */
         .modal {
             display: none;
             position: fixed;
@@ -359,13 +359,26 @@
             box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.05);
         }
 
+        .verse-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
         .verse-num {
             color: var(--accent-gold);
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 1px;
-            margin-bottom: 12px;
             text-transform: uppercase;
+        }
+
+        .audio-player {
+            width: 100%;
+            margin-top: 10px;
+            height: 32px;
+            outline: none;
         }
 
         .arabic-text {
@@ -452,7 +465,7 @@
         <!-- Card 03 -->
         <div class="card" onclick="openSalatModal()">
             <span class="card-number">03</span>
-            <h3>সালাত ও সিয়ামের ব্যাখ্যা</h3>
+            <h3>সালাত ও সিয়ামের ব্যাখ্যা</h3>
         </div>
         <!-- Card 04 -->
         <div class="card" onclick="openIslamImportanceModal()">
@@ -497,10 +510,10 @@
     }
 
     // ---------------------------------------------------------
-    // CARD 1: SURAH & TAFSIR
+    // CARD 1: SURAH & TAFSIR WITH AUDIO
     // ---------------------------------------------------------
     async function openSurahListModal() {
-        openModal("সূরা তালিকা (১১৪টি সূরা)", "<p style='text-align:center;'>সূরা তালিকা লোড করা হচ্ছে...</p>");
+        openModal("সূরা তালিকা (১লাইটটি সূরা)", "<p style='text-align:center;'>সূরা তালিকা লোড করা হচ্ছে...</p>");
 
         if (surahCache.length > 0) {
             renderSurahGrid(surahCache);
@@ -515,7 +528,7 @@
                 renderSurahGrid(surahCache);
             }
         } catch (e) {
-            document.getElementById('modalBody').innerHTML = "<p style='color:#ff6b6b; text-align:center;'>নেটওয়ার্ক সমস্যা। আবার চেষ্টা করুন।</p>";
+            document.getElementById('modalBody').innerHTML = "<p style='color:#ff6b6b; text-align:center;'>নেটওয়ার্ক সমস্যা। আবার চেষ্টা করুন।</p>";
         }
     }
 
@@ -552,13 +565,13 @@
     }
 
     async function loadSurahDetail(surahNum) {
-        document.getElementById('backButtonContainer').innerHTML = `<span class="back-btn" onclick="openSurahListModal()">← সূরা তালিকায় ফিরুন</span>`;
-        document.getElementById('modalTitle').innerText = "আয়াত লোড হচ্ছে...";
-        document.getElementById('modalBody').innerHTML = "<p style='text-align:center;'>কুরআনের আয়াত ও অর্থ লোড করা হচ্ছে...</p>";
+        document.getElementById('backButtonContainer').innerHTML = `<span class="back-btn" onclick="openSurahListModal()">← সূরা তালিকায় ফিরুন</span>`;
+        document.getElementById('modalTitle').innerText = "আয়াত ও অডিও লোড হচ্ছে...";
+        document.getElementById('modalBody').innerHTML = "<p style='text-align:center;'>কুরআনের আয়াত, অর্থ এবং অডিও লোড করা হচ্ছে...</p>";
 
         try {
             const [arRes, bnRes] = await Promise.all([
-                fetch(`https://api.alquran.cloud/v1/surah/${surahNum}`),
+                fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/ar.alafasy`),
                 fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/bn.bengali`)
             ]);
             const arData = await arRes.json();
@@ -569,20 +582,26 @@
             arData.data.ayahs.forEach((ayah, i) => {
                 html += `
                     <div class="verse-box">
-                        <div class="verse-num">আয়াত ${ayah.numberInSurah}</div>
+                        <div class="verse-header">
+                            <div class="verse-num">আয়াত ${ayah.numberInSurah}</div>
+                        </div>
                         <div class="arabic-text">${ayah.text}</div>
                         <div class="translation"><strong>অর্থ:</strong> ${bnData.data.ayahs[i].text}</div>
+                        <audio controls class="audio-player" preload="none">
+                            <source src="${ayah.audio}" type="audio/mpeg">
+                            আপনার ব্রাউজারটি অডিও সাপোর্ট করে না।
+                        </audio>
                     </div>
                 `;
             });
             document.getElementById('modalBody').innerHTML = html;
         } catch (e) {
-            document.getElementById('modalBody').innerHTML = "<p style='color:#ff6b6b; text-align:center;'>আয়াত লোড করা যায়নি।</p>";
+            document.getElementById('modalBody').innerHTML = "<p style='color:#ff6b6b; text-align:center;'>আয়াত বা অডিও লোড করা যায়নি।</p>";
         }
     }
 
     // ---------------------------------------------------------
-    // CARD 2: HADITH SHARIF
+    // CARD 2: HADITH SHARIF WITH SPEECH/AUDIO (TTS)
     // ---------------------------------------------------------
     async function openHadithModal() {
         openModal("সহিহ হাদিস শরিফ", "<p style='text-align:center;'>হাদিস নির্বাচন করুন...</p>");
@@ -592,7 +611,7 @@
                 <button class="action-btn" onclick="fetchRandomHadith('muslim')">সহিহ মুসলিম</button>
                 <button class="action-btn" onclick="fetchRandomHadith('abudawud')">আবু দাউদ</button>
             </div>
-            <div id="hadithContent"><p>উপরের যেকোনো একটি গ্রন্থে ক্লিক করে হাদিস পড়ুন।</p></div>
+            <div id="hadithContent"><p>উপরের যেকোনো একটি গ্রন্থে ক্লিক করে হাদিস পড়ুন।</p></div>
         `;
         document.getElementById('modalBody').innerHTML = html;
         fetchRandomHadith('bukhari');
@@ -605,12 +624,16 @@
             const data = await res.json();
             const random = data.hadiths[Math.floor(Math.random() * data.hadiths.length)];
             
+            // Text to speech function parameters escaped properly
+            const safeText = random.text.replace(/'/g, "\\'").replace(/"/g, '\\"');
+
             document.getElementById('hadithContent').innerHTML = `
-                <div class="verse-box">
+                <div class="verse-box" id="hadithBox">
                     <div class="verse-num">গ্রন্থ: ${data.metadata.name} | হাদিস নং: ${random.hadithnumber}</div>
-                    <div class="translation" style="font-size:16px; line-height:1.8;">
+                    <div class="translation" id="hadithText" style="font-size:16px; line-height:1.8; margin-bottom:15px;">
                         "${random.text}"
                     </div>
+                    <button class="action-btn" style="background: linear-gradient(135deg, #ffd700, #ff8c00); color: #000; margin-right: 10px;" onclick="speakHadith('${safeText}')">🔊 হাদিস শুনুন</button>
                 </div>
                 <button class="action-btn" onclick="fetchRandomHadith('${bookKey}')">অন্য আরেকটি হাদিস দেখুন ↻</button>
             `;
@@ -618,27 +641,45 @@
             document.getElementById('hadithContent').innerHTML = `
                 <div class="verse-box">
                     <div class="verse-num">সহিহ বুখারি, হাদিস ১</div>
-                    <div class="translation">"সকল কাজের ফলাফল নিয়তের ওপর নির্ভরশীল।"</div>
+                    <div class="translation">"সকল কাজের ফলাফল নিয়তের ওপর নির্ভরশীল।"</div>
                 </div>
             `;
         }
     }
 
+    // Browser's built-in Text-to-Speech (TTS) to read Hadith aloud in Bengali
+    function speakHadith(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // Stop previous speech if any
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'bn-BD'; // Set language to Bengali
+            utterance.rate = 0.9; // Normal speaking speed
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("দুঃখিত, আপনার ব্রাউজারটি স্পিচ সিন্থেসিস বা ভয়েস সাপোর্ট করে না।");
+        }
+    }
+
     // ---------------------------------------------------------
-    // CARD 3: SALAT & SAWM
+    // CARD 3: SALAT & SAWM WITH AUTO-UPDATED TIMINGS
     // ---------------------------------------------------------
     async function openSalatModal() {
-        openModal("সালাত ও সিয়ামের সময়সূচী ও ব্যাখ্যা", "<p style='text-align:center;'>আজকের নামাজের সময়সূচী লোড করা হচ্ছে...</p>");
+        openModal("সালাত ও সিয়ামের সময়সূচী ও ব্যাখ্যা", "<p style='text-align:center;'>আজকের অটো-আপডেট হওয়া নামাজের সময়সূচী লোড করা হচ্ছে...</p>");
         try {
-            const res = await fetch("https://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=1");
+            // Fetch live timings using AlAdhan API based on device's current date and city (Dhaka/Bangladesh)
+            const today = new Date();
+            const dateStr = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+            const res = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=1`);
             const data = await res.json();
             const t = data.data.timings;
+            const readableDate = data.data.date.readable;
 
             let html = `
                 <div class="verse-box" style="margin-bottom:20px;">
-                    <div class="verse-num">আজকের সালাতের সময়সূচী (ঢাকা ও আশপাশ):</div>
-                    <p style="line-height:2; font-size:15px;">
+                    <div class="verse-num">আজকের সালাতের সময়সূচী (${readableDate} - ঢাকা):</div>
+                    <p style="line-height:2; font-size:15px; margin-top:10px;">
                         • <strong>ফজর:</strong> ${t.Fajr} AM<br>
+                        • <strong>সূর্যোদয়:</strong> ${t.Sunrise} AM<br>
                         • <strong>যোহোর:</strong> ${t.Dhuhr} PM<br>
                         • <strong>আসর:</strong> ${t.Asr} PM<br>
                         • <strong>মাগরিব (ইফতার):</strong> ${t.Maghrib} PM<br>
@@ -650,13 +691,13 @@
                     <div class="translation">রাসূলুল্লাহ (সাঃ) বলেছেন: "কিয়ামতের দিন বান্দার হিসাবের মধ্যে সর্বপ্রথম সালাতের হিসাব নেওয়া হবে।" (তিরমিযী)</div>
                 </div>
                 <div class="verse-box">
-                    <div class="verse-num">সিয়ামের ফজিলত:</div>
-                    <div class="translation">"যে ব্যক্তি ঈমানের সাথে ও সওয়াবের আশায় রমজানের রোজা রাখবে, তার পূর্বের সকল গুনাহ ক্ষমা করে দেওয়া হবে।" (সহিহ বুখারি)</div>
+                    <div class="verse-num">সিয়ামের ফজিলত:</div>
+                    <div class="translation">"যে ব্যক্তি ঈমানের সাথে ও সওয়াবের আশায় রমজানের রোজা রাখবে, তার পূর্বের সকল গুনাহ ক্ষমা করে দেওয়া হবে।" (সহিহ বুখারি)</div>
                 </div>
             `;
             document.getElementById('modalBody').innerHTML = html;
         } catch (e) {
-            document.getElementById('modalBody').innerHTML = "<p>সময়সূচী লোড করতে সমস্যা হয়েছে।</p>";
+            document.getElementById('modalBody').innerHTML = "<p style='color:#ff6b6b; text-align:center;'>অটো-আপডেট সময়সূচী লোড করতে সমস্যা হয়েছে। ইন্টারনেট কানেকশন চেক করুন।</p>";
         }
     }
 
@@ -677,9 +718,9 @@
                 <div class="translation">"নিশ্চয়ই আল্লাহর নিকট একমাত্র গ্রহণযোগ্য দ্বীন বা জীবনব্যবস্থা হলো ইসলাম।" (সূরা আল-ইমরান: ১৯)</div>
             </div>
             <div class="verse-box">
-                <div class="verse-num">শান্তি ও ন্যায়বিচার:</div>
+                <div class="verse-num">শান্তি ও ন্যায়বিচার:</div>
                 <div class="translation">
-                    ইসলাম মানবজাতিকে অন্ধকার থেকে আলোর দিকে নিয়ে আসে, সমাজে সততা, পরোপকার ও ন্যায়বিচার প্রতিষ্ঠা করে।
+                    ইসলাম মানবজাতিকে অন্ধকার থেকে আলোর দিকে নিয়ে আসে, সমাজে সততা, পরোপকার ও ন্যায়বিচার প্রতিষ্ঠা করে।
                 </div>
             </div>
         `;
@@ -694,16 +735,16 @@
             <div class="verse-box">
                 <div class="verse-num">আলোর পথের বার্তা:</div>
                 <div class="translation">
-                    স্বাগতম <strong>AR Anik</strong>-এর "আলোর পথে" প্ল্যাটফর্মে। আমাদের জীবনের মূল উদ্দেশ্য হলো মহান সৃষ্টিকর্তার ইবাদত করা এবং বিশ্বনবী হযরত মুহাম্মদ (সাঃ)-এর দেখানো সুন্নাহ অনুযায়ী জীবন গড়ে তোলা।
+                    স্বাগতম <strong>AR Anik</strong>-এর "আলোর পথে" প্ল্যাটফর্মে। আমাদের জীবনের মূল উদ্দেশ্য হলো মহান সৃষ্টিকর্তার ইবাদত করা এবং বিশ্বনবী হযরত মুহাম্মদ (সাঃ)-এর দেখানো সুন্নাহ অনুযায়ী জীবন গড়ে তোলা।
                 </div>
             </div>
             <div class="verse-box">
                 <div class="verse-num">জীবনের সফলতার চাবিকাঠি:</div>
                 <div class="translation" style="line-height:2;">
-                    • সঠিক ঈমান আকিদা রক্ষা করা।<br>
-                    • দৈনিক পাঁচ ওয়াক্ত সালাত পাবন্দির সাথে আদায় করা।<br>
-                    • কুরআন তিলওয়াত ও দৈনন্দিন জিকির সুন্নাহর আমল করা।<br>
-                    • মানুষের উপকার করা ও উত্তম আচরণের অধিকারী হওয়া।
+                    • সঠিক ঈমান আকিদা রক্ষা করা。<br>
+                    • দৈনিক পাঁচ ওয়াক্ত সালাত পাবন্দির সাথে আদায় করা。<br>
+                    • কুরআন তিলওয়াত ও দৈনন্দিন জিকির সুন্নাহর আমল করা。<br>
+                    • মানুষের উপকার করা ও উত্তম আচরণের অধিকারী হওয়া।
                 </div>
             </div>
         `;
