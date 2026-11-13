@@ -13,16 +13,17 @@
 
     <style>
         :root {
-            --bg-dark: #02080e;
-            --glass-cyan: rgba(12, 68, 92, 0.35);
-            --border-cyan: rgba(0, 212, 255, 0.45);
-            --accent-cyan: #00e5ff;
+            --bg-primary: #06283d;
+            --bg-deep: #041c2c;
+            --glass-surface: rgba(16, 86, 118, 0.42);
+            --glass-highlight: rgba(255, 255, 255, 0.16);
+            --border-cyan: rgba(56, 228, 255, 0.55);
+            --accent-cyan: #38e4ff;
             --accent-gold: #ffd700;
-            --gold-gradient: linear-gradient(135deg, #fff6b3 0%, #ffd700 50%, #b8860b 100%);
-            --silver-gradient: linear-gradient(145deg, #f0f6fa 0%, #9cb1c9 50%, #465a6e 100%);
-            --modal-bg: linear-gradient(165deg, rgba(8, 32, 48, 0.88) 0%, rgba(2, 12, 22, 0.94) 100%);
-            --text-light: #e0f2fe;
-            --text-muted: #8bb1c7;
+            --gold-gradient: linear-gradient(135deg, #fff8c4 0%, #ffd700 50%, #d49b00 100%);
+            --modal-bg: linear-gradient(165deg, rgba(10, 52, 78, 0.94) 0%, rgba(5, 26, 42, 0.97) 100%);
+            --text-light: #f0f9ff;
+            --text-muted: #bae6fd;
         }
 
         * {
@@ -31,16 +32,22 @@
             padding: 0;
         }
 
+        html, body {
+            min-height: 100vh;
+            background-color: #06283d;
+        }
+
         body {
-            background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(circle at 18% 22%, rgba(0, 175, 225, 0.24) 0%, transparent 45%),
-                radial-gradient(circle at 82% 78%, rgba(255, 200, 50, 0.14) 0%, transparent 45%),
-                radial-gradient(circle at 50% 45%, rgba(6, 32, 52, 0.88) 0%, #02080d 100%);
+                radial-gradient(circle at 18% 18%, rgba(0, 212, 255, 0.36) 0%, transparent 48%),
+                radial-gradient(circle at 82% 22%, rgba(16, 185, 129, 0.28) 0%, transparent 45%),
+                radial-gradient(circle at 78% 82%, rgba(255, 215, 0, 0.22) 0%, transparent 48%),
+                radial-gradient(circle at 25% 80%, rgba(14, 165, 233, 0.3) 0%, transparent 50%),
+                linear-gradient(145deg, #08334a 0%, #06263b 48%, #041b2c 100%);
+            background-attachment: fixed;
             color: var(--text-light);
             font-family: 'Poppins', 'Noto Serif Bengali', sans-serif;
             padding: 40px 20px 20px;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -49,8 +56,7 @@
         }
 
         /* =========================================================
-           FAST-ROTATING 3D COSMIC CELESTIAL PLANETS ("GROHO") &
-           SACRED CALLIGRAPHY BACKGROUND
+           FAST-ROTATING 3D COSMIC CELESTIAL PLANETS & MANDALAS
            ========================================================= */
         .islamic-bg-stage {
             position: fixed;
@@ -61,53 +67,50 @@
             perspective: 1400px;
         }
 
-        /* Deep Ambient Cosmic Glow */
         .ambient-halo {
             position: absolute;
-            top: 50%;
+            top: 48%;
             left: 50%;
-            width: 90vmax;
-            height: 90vmax;
+            width: 95vmax;
+            height: 95vmax;
             transform: translate(-50%, -50%);
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.16) 0%, rgba(255, 215, 0, 0.06) 42%, transparent 72%);
-            filter: blur(42px);
-            animation: pulseGlow 8s ease-in-out infinite alternate;
+            background: radial-gradient(circle, rgba(56, 228, 255, 0.24) 0%, rgba(16, 185, 129, 0.14) 38%, rgba(255, 215, 0, 0.1) 58%, transparent 75%);
+            filter: blur(36px);
+            animation: pulseGlow 7s ease-in-out infinite alternate;
         }
 
         @keyframes pulseGlow {
-            0% { transform: translate(-50%, -50%) scale(0.94); opacity: 0.75; }
-            100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+            0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.85; }
+            100% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
         }
 
-        /* Faster Rotating Sacred Mandala Layers */
         .mandala-layer {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform-style: preserve-3d;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .mandala-outer {
-            width: 115vmax;
-            height: 115vmax;
-            margin-top: -57.5vmax;
-            margin-left: -57.5vmax;
-            opacity: 0.22;
-            animation: rotateCW 45s linear infinite;
-            filter: drop-shadow(0 0 25px rgba(0, 229, 255, 0.38));
+            width: 112vmax;
+            height: 112vmax;
+            margin-top: -56vmax;
+            margin-left: -56vmax;
+            opacity: 0.34;
+            animation: rotateCW 38s linear infinite;
+            filter: drop-shadow(0 0 22px rgba(56, 228, 255, 0.45));
         }
 
         .mandala-middle {
-            width: 78vmax;
-            height: 78vmax;
-            margin-top: -39vmax;
-            margin-left: -39vmax;
-            opacity: 0.3;
-            animation: rotateCCW 32s linear infinite;
-            filter: drop-shadow(0 0 22px rgba(255, 215, 0, 0.32));
+            width: 76vmax;
+            height: 76vmax;
+            margin-top: -38vmax;
+            margin-left: -38vmax;
+            opacity: 0.42;
+            animation: rotateCCW 26s linear infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
         }
 
         .mandala-inner {
@@ -115,73 +118,65 @@
             height: 44vmax;
             margin-top: -22vmax;
             margin-left: -22vmax;
-            opacity: 0.25;
-            animation: rotateCW 22s linear infinite;
-            filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.45));
+            opacity: 0.36;
+            animation: rotateCW 18s linear infinite;
+            filter: drop-shadow(0 0 18px rgba(56, 228, 255, 0.5));
         }
 
-        /* Corner Rotating Rub el Hizb Glass Stars */
         .corner-star-tl {
             position: absolute;
-            top: -115px;
-            left: -115px;
-            width: 370px;
-            height: 370px;
-            opacity: 0.25;
-            animation: rotateCW 26s linear infinite;
-            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.42));
+            top: -105px;
+            left: -105px;
+            width: 360px;
+            height: 360px;
+            opacity: 0.38;
+            animation: rotateCW 22s linear infinite;
+            filter: drop-shadow(0 0 20px rgba(56, 228, 255, 0.5));
         }
 
         .corner-star-br {
             position: absolute;
-            bottom: -135px;
-            right: -135px;
-            width: 430px;
-            height: 430px;
-            opacity: 0.24;
-            animation: rotateCCW 30s linear infinite;
-            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.38));
+            bottom: -120px;
+            right: -120px;
+            width: 410px;
+            height: 410px;
+            opacity: 0.36;
+            animation: rotateCCW 25s linear infinite;
+            filter: drop-shadow(0 0 24px rgba(255, 215, 0, 0.45));
         }
 
-        /* =========================================================
-           3D CELESTIAL PLANETS ("GROHO") WITH ALLAH & KALIMA CALLIGRAPHY
-           ========================================================= */
+        /* 3D CELESTIAL PLANETS */
         .groho-system {
             position: absolute;
             display: flex;
             align-items: center;
             justify-content: center;
-            transform-style: preserve-3d;
         }
 
-        /* Primary Golden-Cyan Planet ("اللّٰهُ") - Top Right */
         .groho-allah {
-            width: 240px;
-            height: 240px;
-            top: 8%;
-            right: 8%;
-            animation: orbitDrift1 14s ease-in-out infinite alternate;
+            width: 245px;
+            height: 245px;
+            top: 7%;
+            right: 7%;
+            animation: orbitDrift1 12s ease-in-out infinite alternate;
         }
 
-        /* Secondary Kalima Planet ("لَا إِلٰهَ إِلَّا اللّٰهُ مُحَمَّدٌ رَّسُولُ اللّٰهِ") - Bottom Left */
         .groho-kalima {
-            width: 280px;
-            height: 280px;
-            bottom: 9%;
-            left: 5%;
-            animation: orbitDrift2 16s ease-in-out infinite alternate;
+            width: 285px;
+            height: 285px;
+            bottom: 8%;
+            left: 4%;
+            animation: orbitDrift2 14s ease-in-out infinite alternate;
         }
 
-        /* Third Accent Planet ("اللّٰهُ") - Mid Right */
         .groho-mini {
-            width: 145px;
-            height: 145px;
+            width: 150px;
+            height: 150px;
             top: 56%;
-            right: 16%;
-            animation: orbitDrift1 11s ease-in-out infinite alternate-reverse;
+            right: 15%;
+            animation: orbitDrift1 9s ease-in-out infinite alternate-reverse;
         }
 
-        /* 3D Luminous Glass Planet Sphere */
         .planet-sphere {
             position: relative;
             width: 56%;
@@ -191,41 +186,39 @@
             align-items: center;
             justify-content: center;
             background: 
-                radial-gradient(circle at 28% 26%, rgba(255, 255, 255, 0.72) 0%, rgba(0, 229, 255, 0.38) 28%, rgba(8, 48, 76, 0.82) 68%, rgba(2, 10, 18, 0.96) 100%);
-            border: 1.5px solid rgba(255, 235, 150, 0.65);
+                radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.85) 0%, rgba(56, 228, 255, 0.55) 32%, rgba(14, 92, 132, 0.85) 70%, rgba(6, 40, 66, 0.95) 100%);
+            border: 2px solid rgba(255, 238, 160, 0.8);
             box-shadow: 
-                inset -14px -14px 28px rgba(0, 0, 0, 0.85),
-                inset 8px 8px 20px rgba(255, 255, 255, 0.65),
-                0 0 38px rgba(0, 229, 255, 0.45),
-                0 0 65px rgba(255, 215, 0, 0.25);
-            backdrop-filter: blur(8px);
+                inset -12px -12px 24px rgba(4, 24, 40, 0.7),
+                inset 8px 8px 18px rgba(255, 255, 255, 0.75),
+                0 0 38px rgba(56, 228, 255, 0.6),
+                0 0 65px rgba(255, 215, 0, 0.35);
             overflow: hidden;
         }
 
         .groho-kalima .planet-sphere {
             background: 
-                radial-gradient(circle at 30% 28%, rgba(255, 248, 200, 0.75) 0%, rgba(255, 195, 40, 0.35) 30%, rgba(12, 42, 68, 0.85) 70%, rgba(2, 10, 18, 0.96) 100%);
-            border-color: rgba(0, 229, 255, 0.65);
+                radial-gradient(circle at 32% 28%, rgba(255, 252, 215, 0.88) 0%, rgba(255, 200, 55, 0.5) 34%, rgba(16, 78, 112, 0.85) 72%, rgba(6, 36, 58, 0.95) 100%);
+            border-color: rgba(56, 228, 255, 0.8);
             box-shadow: 
-                inset -16px -16px 32px rgba(0, 0, 0, 0.88),
-                inset 8px 8px 22px rgba(255, 245, 190, 0.7),
-                0 0 42px rgba(255, 215, 0, 0.38),
-                0 0 70px rgba(0, 229, 255, 0.28);
+                inset -14px -14px 28px rgba(4, 24, 40, 0.72),
+                inset 8px 8px 20px rgba(255, 248, 200, 0.8),
+                0 0 42px rgba(255, 215, 0, 0.5),
+                0 0 72px rgba(56, 228, 255, 0.4);
         }
 
-        /* Rotating Surface Texture & Sacred Name Inside Planet */
         .planet-surface-spin {
             position: absolute;
             inset: -15%;
             border-radius: 50%;
             background: repeating-linear-gradient(
                 -25deg,
-                rgba(255, 255, 255, 0.06) 0px,
-                rgba(255, 255, 255, 0.06) 6px,
+                rgba(255, 255, 255, 0.12) 0px,
+                rgba(255, 255, 255, 0.12) 6px,
                 transparent 6px,
                 transparent 16px
             );
-            animation: rotateCW 12s linear infinite;
+            animation: rotateCW 8s linear infinite;
             pointer-events: none;
         }
 
@@ -234,74 +227,60 @@
             z-index: 2;
             font-family: 'Amiri', serif;
             font-weight: 700;
-            color: #fffbe6;
+            color: #ffffff;
             text-align: center;
             direction: rtl;
             line-height: 1.25;
             text-shadow: 
-                0 0 12px rgba(255, 215, 0, 0.95),
-                0 0 24px rgba(0, 229, 255, 0.85),
-                0 2px 5px rgba(0, 0, 0, 0.95);
-            animation: calligraphySpin3D 14s linear infinite;
+                0 0 12px rgba(255, 215, 0, 1),
+                0 0 24px rgba(56, 228, 255, 0.95),
+                0 2px 6px rgba(0, 15, 30, 0.9);
+            animation: calligraphyPulse 4s ease-in-out infinite alternate;
         }
 
-        .groho-allah .planet-calligraphy {
-            font-size: 38px;
-        }
+        .groho-allah .planet-calligraphy { font-size: 38px; }
+        .groho-mini .planet-calligraphy { font-size: 24px; }
+        .groho-kalima .planet-calligraphy { font-size: 16px; padding: 0 10px; }
 
-        .groho-mini .planet-calligraphy {
-            font-size: 24px;
-            animation-duration: 10s;
-        }
-
-        .groho-kalima .planet-calligraphy {
-            font-size: 16px;
-            padding: 0 10px;
-            animation-duration: 18s;
-        }
-
-        /* Fast-Rotating Planetary Orbital Rings (Saturn-like Glass Rings with Circular Kalima SVG) */
         .planet-ring-outer {
             position: absolute;
             inset: 0;
-            animation: rotateCW 10s linear infinite;
-            filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.55));
+            animation: rotateCW 8s linear infinite;
+            filter: drop-shadow(0 0 14px rgba(255, 215, 0, 0.7));
         }
 
         .planet-ring-inner {
             position: absolute;
             inset: 12%;
-            animation: rotateCCW 7.5s linear infinite;
-            filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.65));
+            animation: rotateCCW 6s linear infinite;
+            filter: drop-shadow(0 0 12px rgba(56, 228, 255, 0.75));
         }
 
-        /* Orbiting Moon Satellites */
         .orbit-moon {
             position: absolute;
-            top: 4px;
+            top: 3px;
             left: 50%;
-            width: 12px;
-            height: 12px;
-            margin-left: -6px;
+            width: 13px;
+            height: 13px;
+            margin-left: -6.5px;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #ffffff, #ffd700 65%, #b8860b 100%);
-            box-shadow: 0 0 14px #ffd700, 0 0 24px #00e5ff;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #ffd700 65%, #d49b00 100%);
+            box-shadow: 0 0 15px #ffd700, 0 0 26px #38e4ff;
         }
 
-        @keyframes calligraphySpin3D {
-            0% { transform: rotateY(0deg) scale(1); }
-            50% { transform: rotateY(180deg) scale(1.06); }
-            100% { transform: rotateY(360deg) scale(1); }
+        @keyframes calligraphyPulse {
+            0% { transform: scale(0.96); }
+            100% { transform: scale(1.06); }
         }
 
         @keyframes orbitDrift1 {
-            0% { transform: translate3d(0, 0, 0) rotate(-6deg); }
-            100% { transform: translate3d(-24px, 20px, 30px) rotate(6deg); }
+            0% { transform: translate(0, 0) rotate(-6deg); }
+            100% { transform: translate(-24px, 20px) rotate(6deg); }
         }
 
         @keyframes orbitDrift2 {
-            0% { transform: translate3d(0, 0, 0) rotate(5deg); }
-            100% { transform: translate3d(26px, -22px, 35px) rotate(-5deg); }
+            0% { transform: translate(0, 0) rotate(5deg); }
+            100% { transform: translate(26px, -22px) rotate(-5deg); }
         }
 
         @keyframes rotateCW {
@@ -315,62 +294,61 @@
         }
 
         @media (max-width: 650px) {
-            .groho-allah { width: 175px; height: 175px; top: 4%; right: -15px; }
+            .groho-allah { width: 175px; height: 175px; top: 4%; right: -10px; }
             .groho-allah .planet-calligraphy { font-size: 28px; }
-            .groho-kalima { width: 200px; height: 200px; bottom: 5%; left: -20px; }
+            .groho-kalima { width: 205px; height: 205px; bottom: 5%; left: -15px; }
             .groho-kalima .planet-calligraphy { font-size: 12px; }
-            .groho-mini { width: 110px; height: 110px; top: 52%; right: 4%; }
+            .groho-mini { width: 115px; height: 115px; top: 52%; right: 4%; }
         }
 
         /* =========================================================
-           MINIMALIST ICON-ONLY GLASS AUDIO TOGGLE BUTTON (NO TEXT)
+           TOP-RIGHT FROSTED GLASS AUDIO TOGGLE BUTTON (KUN ANTA / AMBIENT)
            ========================================================= */
         .sound-toggle-btn {
             position: fixed;
             top: 22px;
             right: 22px;
             z-index: 900;
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 180, 220, 0.22));
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1.5px solid rgba(255, 255, 255, 0.45);
-            border-bottom-color: rgba(0, 212, 255, 0.4);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(16, 120, 160, 0.45));
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid rgba(255, 255, 255, 0.65);
             color: #ffffff;
             cursor: pointer;
             box-shadow: 
-                0 10px 25px rgba(0, 0, 0, 0.6),
-                0 0 18px rgba(0, 229, 255, 0.28),
-                inset 0 1.5px 3px rgba(255, 255, 255, 0.7);
+                0 10px 25px rgba(0, 20, 35, 0.45),
+                0 0 20px rgba(56, 228, 255, 0.4),
+                inset 0 1.5px 3px rgba(255, 255, 255, 0.8);
             transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .sound-toggle-btn:hover {
             transform: translateY(-2px) scale(1.08);
             border-color: var(--accent-gold);
-            box-shadow: 0 12px 30px rgba(0, 229, 255, 0.45), inset 0 1px 4px rgba(255, 255, 255, 0.9);
+            box-shadow: 0 12px 30px rgba(56, 228, 255, 0.55), inset 0 1px 4px rgba(255, 255, 255, 0.95);
         }
 
         .sound-toggle-btn.active-playing {
-            border-color: rgba(255, 215, 0, 0.7);
+            border-color: rgba(255, 215, 0, 0.85);
             box-shadow: 
-                0 10px 25px rgba(0, 0, 0, 0.6),
-                0 0 22px rgba(255, 215, 0, 0.35),
-                inset 0 1.5px 3px rgba(255, 255, 255, 0.8);
+                0 10px 25px rgba(0, 20, 35, 0.45),
+                0 0 24px rgba(255, 215, 0, 0.45),
+                inset 0 1.5px 3px rgba(255, 255, 255, 0.85);
         }
 
         .sound-toggle-btn.muted {
-            opacity: 0.72;
-            border-color: rgba(255, 92, 119, 0.5);
+            opacity: 0.78;
+            border-color: rgba(255, 107, 129, 0.65);
         }
 
         /* =========================================================
-           MAIN CONTENT CONTAINER & 3D FROSTED GLASS HEADER
+           MAIN CONTAINER & HEADER
            ========================================================= */
         .container {
             max-width: 1160px;
@@ -378,7 +356,7 @@
             width: 100%;
             flex: 1;
             position: relative;
-            z-index: 2;
+            z-index: 5;
         }
         
         .header-wrapper {
@@ -390,26 +368,25 @@
 
         .profile-header {
             position: relative;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(16, 85, 115, 0.35) 50%, rgba(6, 28, 44, 0.65) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(18, 105, 142, 0.48) 50%, rgba(8, 48, 74, 0.72) 100%);
             padding: 38px 54px 22px 44px;
             border-radius: 42px;
-            backdrop-filter: blur(22px) saturate(140%);
-            -webkit-backdrop-filter: blur(22px) saturate(140%);
-            border: 1.5px solid rgba(255, 255, 255, 0.45);
-            border-top: 2px solid rgba(255, 255, 255, 0.78);
-            border-left: 2px solid rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(18px) saturate(145%);
+            -webkit-backdrop-filter: blur(18px) saturate(145%);
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+            border-top: 2px solid rgba(255, 255, 255, 0.85);
+            border-left: 2px solid rgba(255, 255, 255, 0.65);
             box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.75),
-                0 0 35px rgba(0, 212, 255, 0.2),
-                inset 0 3px 8px rgba(255, 255, 255, 0.75),
-                inset 0 -10px 25px rgba(0, 170, 220, 0.28);
+                0 22px 45px rgba(2, 20, 35, 0.55),
+                0 0 35px rgba(56, 228, 255, 0.3),
+                inset 0 3px 8px rgba(255, 255, 255, 0.8),
+                inset 0 -10px 25px rgba(0, 185, 235, 0.3);
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             min-width: 390px;
-            transform-style: preserve-3d;
+            max-width: 100%;
             transition: transform 0.25s ease-out, box-shadow 0.3s ease;
-            overflow: visible;
         }
 
         .profile-header::before {
@@ -417,7 +394,7 @@
             position: absolute;
             inset: 0;
             border-radius: 42px;
-            background: linear-gradient(115deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.03) 45%, transparent 65%);
+            background: linear-gradient(115deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.05) 45%, transparent 65%);
             pointer-events: none;
         }
 
@@ -425,7 +402,8 @@
             position: absolute;
             top: -46px;
             left: 50%;
-            transform: translateX(-50%) translateZ(28px);
+            transform: translateX(-50%);
+            z-index: 6;
         }
 
         .profile-img-border {
@@ -435,8 +413,8 @@
             background: var(--gold-gradient);
             padding: 4px;
             box-shadow: 
-                0 10px 25px rgba(0, 0, 0, 0.85),
-                0 0 22px rgba(0, 229, 255, 0.55);
+                0 10px 25px rgba(2, 20, 35, 0.65),
+                0 0 24px rgba(56, 228, 255, 0.65);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -447,7 +425,8 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #071926;
+            border: 2px solid #08334a;
+            background-color: #0b4666;
         }
 
         .website-title {
@@ -458,82 +437,415 @@
             margin-top: 25px;
             margin-bottom: 2px;
             text-shadow: 
-                0 0 14px rgba(0, 229, 255, 0.85),
-                2px 4px 8px rgba(0, 0, 0, 0.9);
+                0 0 16px rgba(56, 228, 255, 0.9),
+                2px 4px 8px rgba(2, 20, 35, 0.75);
             letter-spacing: 1px;
-            transform: translateZ(18px);
         }
 
         .website-subtitle {
-            color: #bae6fd;
+            color: #e0f2fe;
             font-family: 'Noto Serif Bengali', serif;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 13.5px;
+            font-weight: 600;
             letter-spacing: 0.6px;
             margin-bottom: 8px;
-            opacity: 0.92;
-            transform: translateZ(16px);
+            opacity: 0.96;
         }
 
         .author-info {
             text-align: center;
-            transform: translateZ(14px);
             padding-top: 6px;
-            border-top: 1px solid rgba(255, 255, 255, 0.16);
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
             width: 100%;
         }
 
         .author-name {
-            color: #e0f2fe;
+            color: #ffffff;
             font-family: 'Cinzel', serif;
             font-size: 16px;
             font-weight: 700;
             letter-spacing: 2.2px;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
+            text-shadow: 0 2px 6px rgba(2, 20, 35, 0.7);
         }
 
         .author-phone {
-            font-size: 13px;
+            font-size: 13.5px;
             color: var(--accent-gold);
             letter-spacing: 1.5px;
-            font-weight: 600;
+            font-weight: 700;
             margin-top: 2px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.45);
+            text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+        }
+
+        @media (max-width: 480px) {
+            .profile-header { min-width: unset; width: 100%; padding: 36px 24px 20px; }
         }
 
         /* =========================================================
-           ULTRA-3D GLASSMORPHISM CARDS GRID
+           3D GLASSMORPHISM CARDS GRID
            ========================================================= */
-/* ... existing code ... -->
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 22px;
+            perspective: 1300px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 5;
+        }
+
+        @media (max-width: 992px) {
+            .card-grid { grid-template-columns: repeat(3, 1fr); }
+            .header-wrapper { justify-content: center; }
+        }
+        @media (max-width: 650px) {
+            .card-grid { grid-template-columns: repeat(1, 1fr); }
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.2) 0%, rgba(18, 108, 146, 0.48) 55%, rgba(8, 52, 80, 0.72) 100%);
+            height: 205px;
+            border-radius: 26px;
+            backdrop-filter: blur(16px) saturate(140%);
+            -webkit-backdrop-filter: blur(16px) saturate(140%);
+            border: 1.5px solid rgba(56, 228, 255, 0.55);
+            border-top: 2px solid rgba(255, 255, 255, 0.85);
+            border-left: 2px solid rgba(255, 255, 255, 0.6);
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 22px 14px;
+            transform: rotateX(10deg) rotateY(-6deg);
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, border-color 0.35s ease;
+            box-shadow: 
+                -10px 18px 32px rgba(2, 20, 35, 0.55),
+                0 0 20px rgba(56, 228, 255, 0.22),
+                inset 0 2px 5px rgba(255, 255, 255, 0.65),
+                inset -4px -4px 12px rgba(4, 28, 46, 0.45);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 26px;
+            background: linear-gradient(125deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.04) 45%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .card-geo-watermark {
+            position: absolute;
+            width: 115px;
+            height: 115px;
+            opacity: 0.2;
+            pointer-events: none;
+            transition: transform 0.6s ease, opacity 0.4s ease;
+        }
+
+        .card:hover .card-geo-watermark {
+            transform: rotate(45deg) scale(1.14);
+            opacity: 0.35;
+        }
+
+        .card:hover {
+            transform: translateY(-12px) rotateX(0deg) rotateY(0deg) scale(1.04);
+            border-color: var(--accent-gold);
+            box-shadow: 
+                0 22px 42px rgba(56, 228, 255, 0.45),
+                0 0 30px rgba(255, 215, 0, 0.35),
+                inset 0 2px 6px rgba(255, 255, 255, 0.85);
+        }
+
+        .card-number {
+            position: absolute;
+            top: -17px;
+            font-family: 'Cinzel', serif;
+            font-size: 13.5px;
+            color: #1a0f00;
+            background: var(--gold-gradient);
+            font-weight: 800;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            border-radius: 50%;
+            box-shadow: 
+                0 6px 14px rgba(2, 20, 35, 0.65),
+                inset 0 1px 2px rgba(255, 255, 255, 0.9);
+            border: 1.5px solid #fff3a1;
+            z-index: 3;
+        }
+
+        .card h3 {
+            color: #ffffff;
+            font-family: 'Noto Serif Bengali', serif;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.45;
+            text-shadow: 0 2px 8px rgba(2, 20, 35, 0.85);
+            padding: 0 6px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* =========================================================
+           MODALS
+           ========================================================= */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(4, 24, 40, 0.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 1000;
+            animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-content {
+            background: var(--modal-bg);
+            padding: 35px 30px;
+            border-radius: 30px;
+            max-width: 850px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1.5px solid rgba(56, 228, 255, 0.55);
+            border-top: 2px solid rgba(255, 255, 255, 0.65);
+            box-shadow: 
+                0 28px 65px rgba(2, 16, 28, 0.8),
+                0 0 40px rgba(56, 228, 255, 0.3),
+                inset 0 1px 2px rgba(255, 255, 255, 0.35);
+        }
+
+        .modal-content::-webkit-scrollbar { width: 6px; }
+        .modal-content::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--accent-cyan), #0284c7); border-radius: 10px; }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #e0f2fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .close-btn:hover { 
+            background: rgba(255, 0, 85, 0.28); 
+            color: #ff6b81; 
+            border-color: rgba(255, 0, 85, 0.5);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 20px;
+            color: var(--accent-cyan);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid rgba(56, 228, 255, 0.45);
+            padding: 6px 18px;
+            border-radius: 20px;
+            background: rgba(56, 228, 255, 0.14);
+            transition: all 0.2s ease;
+        }
+        .back-btn:hover { background: rgba(56, 228, 255, 0.28); transform: translateX(-2px); }
+
+        .modal-title {
+            color: #ffffff;
+            font-family: 'Noto Serif Bengali', serif;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 22px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(56, 228, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 14px 20px;
+            background: rgba(4, 24, 40, 0.55);
+            border: 1px solid rgba(56, 228, 255, 0.4);
+            border-radius: 16px;
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 25px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-box::placeholder { color: #bae6fd; opacity: 0.7; }
+        .search-box:focus { 
+            border-color: var(--accent-cyan); 
+            box-shadow: 0 0 15px rgba(56, 228, 255, 0.3);
+            background: rgba(4, 24, 40, 0.75);
+        }
+
+        .surah-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 14px;
+        }
+
+        .surah-item {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(56, 228, 255, 0.28);
+            padding: 16px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .surah-item:hover { 
+            background: linear-gradient(135deg, rgba(56, 228, 255, 0.28), rgba(14, 116, 144, 0.55));
+            border-color: var(--accent-cyan); 
+            transform: translateY(-3px);
+        }
+
+        .verse-box {
+            background: rgba(6, 36, 56, 0.6);
+            border: 1px solid rgba(56, 228, 255, 0.3);
+            padding: 22px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.12);
+        }
+
+        .verse-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .verse-num {
+            color: var(--accent-gold);
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .audio-player {
+            width: 100%;
+            margin-top: 12px;
+            height: 36px;
+            border-radius: 12px;
+            outline: none;
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 28px;
+            color: #ffffff;
+            text-align: right;
+            direction: rtl;
+            line-height: 2.2;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 6px rgba(0, 15, 30, 0.65);
+        }
+
+        .translation { color: #e0f2fe; font-size: 15.5px; line-height: 1.8; }
+
+        .action-btn {
+            background: linear-gradient(135deg, #38e4ff, #0284c7);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            padding: 12px 24px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 700;
+            color: #031524;
+            margin-top: 10px;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 15px rgba(56, 228, 255, 0.35);
+        }
+        .action-btn:hover { 
+            filter: brightness(1.12); 
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(56, 228, 255, 0.55);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 0 5px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(56, 228, 255, 0.3);
+            font-size: 14px;
+            color: #bae6fd;
+            background: linear-gradient(180deg, transparent 0%, rgba(4, 24, 40, 0.55) 100%);
+            position: relative;
+            z-index: 5;
+        }
+
+        .designer-name {
+            font-family: 'Cinzel', serif;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1.2px;
+            text-shadow: 0 0 12px rgba(56, 228, 255, 0.6);
+        }
+    </style>
 </head>
 <body>
 
-<!-- =========================================================
-     FAST-ROTATING COSMIC CELESTIAL PLANETS ("GROHO") &
-     ISLAMIC SACRED GEOMETRY 3D GLASSY BACKGROUND
-     ========================================================= -->
+<!-- Hidden Audio Element for "Kun Anta" Nasheed (Humood Alkhudher) -->
+<audio id="kunAntaAudio" preload="auto" loop>
+    <source src="https://cdns.islamway.net/lessons/arabic/462/11_KunAnta.mp3" type="audio/mpeg">
+    <source src="https://download.quranicaudio.com/quran/mishary_al_afasy/001.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Background Cosmic Stage -->
 <div class="islamic-bg-stage" aria-hidden="true">
     <div class="ambient-halo"></div>
 
-    <!-- PLANET 1 ("GROHO"): ALLAH CALLIGRAPHY WITH ROTATING KALIMA RING -->
+    <!-- PLANET 1: ALLAH CALLIGRAPHY -->
     <div class="groho-system groho-allah">
         <svg class="planet-ring-outer" viewBox="0 0 240 240" fill="none">
             <defs>
                 <path id="allahRingPath" d="M 120, 120 m -98, 0 a 98,98 0 1,1 196,0 a 98,98 0 1,1 -196,0" />
                 <linearGradient id="planetGoldCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ffd700" stop-opacity="0.9"/>
-                    <stop offset="50%" stop-color="#ffffff" stop-opacity="0.7"/>
-                    <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.9"/>
+                    <stop offset="0%" stop-color="#ffd700" stop-opacity="0.95"/>
+                    <stop offset="50%" stop-color="#ffffff" stop-opacity="0.8"/>
+                    <stop offset="100%" stop-color="#38e4ff" stop-opacity="0.95"/>
                 </linearGradient>
             </defs>
-            <circle cx="120" cy="120" r="108" stroke="url(#planetGoldCyan)" stroke-width="1.4" stroke-dasharray="5 5"/>
-            <circle cx="120" cy="120" r="88" stroke="url(#planetGoldCyan)" stroke-width="1"/>
-            <text fill="#ffe875" font-family="'Amiri', serif" font-size="14" font-weight="700" letter-spacing="2">
+            <circle cx="120" cy="120" r="108" stroke="url(#planetGoldCyan)" stroke-width="1.6" stroke-dasharray="5 5"/>
+            <circle cx="120" cy="120" r="88" stroke="url(#planetGoldCyan)" stroke-width="1.2"/>
+            <text fill="#fff099" font-family="'Amiri', serif" font-size="14" font-weight="700" letter-spacing="2">
                 <textPath href="#allahRingPath" startOffset="0%">
                     اللّٰهُ • لَا إِلٰهَ إِلَّا اللّٰهُ • اللّٰهُ • مُحَمَّدٌ رَّسُولُ اللّٰهِ •
                 </textPath>
             </text>
-            <circle cx="120" cy="12" r="5" fill="#ffd700"/>
+            <circle cx="120" cy="12" r="5.5" fill="#ffd700"/>
         </svg>
         <div class="planet-ring-inner">
             <div class="orbit-moon"></div>
@@ -544,21 +856,21 @@
         </div>
     </div>
 
-    <!-- PLANET 2 ("GROHO"): KALIMA TAYYIBAH WITH ROTATING ORBITAL RINGS -->
+    <!-- PLANET 2: KALIMA TAYYIBAH -->
     <div class="groho-system groho-kalima">
         <svg class="planet-ring-outer" viewBox="0 0 280 280" fill="none">
             <defs>
                 <path id="kalimaRingPath" d="M 140, 140 m -116, 0 a 116,116 0 1,1 232,0 a 116,116 0 1,1 -232,0" />
             </defs>
-            <circle cx="140" cy="140" r="128" stroke="url(#planetGoldCyan)" stroke-width="1.5"/>
-            <circle cx="140" cy="140" r="102" stroke="url(#planetGoldCyan)" stroke-width="1.2" stroke-dasharray="4 6"/>
-            <text fill="#e0f7ff" font-family="'Amiri', serif" font-size="15" font-weight="700" letter-spacing="1.5">
+            <circle cx="140" cy="140" r="128" stroke="url(#planetGoldCyan)" stroke-width="1.6"/>
+            <circle cx="140" cy="140" r="102" stroke="url(#planetGoldCyan)" stroke-width="1.3" stroke-dasharray="4 6"/>
+            <text fill="#ffffff" font-family="'Amiri', serif" font-size="15" font-weight="700" letter-spacing="1.5">
                 <textPath href="#kalimaRingPath" startOffset="0%">
                     لَا إِلٰهَ إِلَّا اللّٰهُ مُحَمَّدٌ رَّسُولُ اللّٰهِ • سُبْحَانَ اللّٰهِ وَبِحَمْدِهِ •
                 </textPath>
             </text>
-            <circle cx="140" cy="12" r="5.5" fill="#00e5ff"/>
-            <circle cx="140" cy="268" r="4.5" fill="#ffd700"/>
+            <circle cx="140" cy="12" r="6" fill="#38e4ff"/>
+            <circle cx="140" cy="268" r="5" fill="#ffd700"/>
         </svg>
         <div class="planet-ring-inner">
             <div class="orbit-moon"></div>
@@ -569,11 +881,11 @@
         </div>
     </div>
 
-    <!-- PLANET 3 ("GROHO"): LUMINOUS ALLAH ORB -->
+    <!-- PLANET 3: ALLAH ORB -->
     <div class="groho-system groho-mini">
         <svg class="planet-ring-outer" viewBox="0 0 150 150" fill="none">
-            <circle cx="75" cy="75" r="66" stroke="url(#planetGoldCyan)" stroke-width="1.4" stroke-dasharray="3 4"/>
-            <circle cx="75" cy="9" r="4" fill="#ffd700"/>
+            <circle cx="75" cy="75" r="66" stroke="url(#planetGoldCyan)" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <circle cx="75" cy="9" r="4.5" fill="#ffd700"/>
         </svg>
         <div class="planet-sphere">
             <div class="planet-surface-spin"></div>
@@ -581,76 +893,69 @@
         </div>
     </div>
 
-    <!-- Top-Left Rotating Rub el Hizb Octagram -->
+    <!-- Rotating Corners & Mandalas -->
     <svg class="corner-star-tl" viewBox="0 0 200 200" fill="none">
         <defs>
             <linearGradient id="glassCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.75"/>
-                <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.35"/>
-                <stop offset="100%" stop-color="#ffd700" stop-opacity="0.55"/>
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+                <stop offset="50%" stop-color="#38e4ff" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#ffd700" stop-opacity="0.7"/>
             </linearGradient>
         </defs>
-        <circle cx="100" cy="100" r="92" stroke="url(#glassCyanGrad)" stroke-width="1.2" stroke-dasharray="4 4"/>
-        <circle cx="100" cy="100" r="76" stroke="url(#glassCyanGrad)" stroke-width="1.5"/>
-        <rect x="46" y="46" width="108" height="108" stroke="url(#glassCyanGrad)" stroke-width="1.8" fill="rgba(0, 229, 255, 0.04)"/>
-        <rect x="46" y="46" width="108" height="108" transform="rotate(45 100 100)" stroke="url(#glassCyanGrad)" stroke-width="1.8" fill="rgba(255, 215, 0, 0.03)"/>
-        <circle cx="100" cy="100" r="34" stroke="url(#glassCyanGrad)" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="92" stroke="url(#glassCyanGrad)" stroke-width="1.4" stroke-dasharray="4 4"/>
+        <circle cx="100" cy="100" r="76" stroke="url(#glassCyanGrad)" stroke-width="1.6"/>
+        <rect x="46" y="46" width="108" height="108" stroke="url(#glassCyanGrad)" stroke-width="2" fill="rgba(56, 228, 255, 0.08)"/>
+        <rect x="46" y="46" width="108" height="108" transform="rotate(45 100 100)" stroke="url(#glassCyanGrad)" stroke-width="2" fill="rgba(255, 215, 0, 0.06)"/>
+        <circle cx="100" cy="100" r="34" stroke="url(#glassCyanGrad)" stroke-width="1.6"/>
     </svg>
 
-    <!-- Bottom-Right Rotating Rub el Hizb Octagram -->
     <svg class="corner-star-br" viewBox="0 0 200 200" fill="none">
-        <circle cx="100" cy="100" r="92" stroke="url(#glassCyanGrad)" stroke-width="1.2"/>
-        <rect x="44" y="44" width="112" height="112" stroke="url(#glassCyanGrad)" stroke-width="1.8" fill="rgba(0, 229, 255, 0.04)"/>
-        <rect x="44" y="44" width="112" height="112" transform="rotate(45 100 100)" stroke="url(#glassCyanGrad)" stroke-width="1.8" fill="rgba(255, 215, 0, 0.04)"/>
-        <polygon points="100,24 118,82 176,100 118,118 100,176 82,118 24,100 82,82" stroke="url(#glassCyanGrad)" stroke-width="1.2" fill="rgba(255,255,255,0.03)"/>
+        <circle cx="100" cy="100" r="92" stroke="url(#glassCyanGrad)" stroke-width="1.4"/>
+        <rect x="44" y="44" width="112" height="112" stroke="url(#glassCyanGrad)" stroke-width="2" fill="rgba(56, 228, 255, 0.08)"/>
+        <rect x="44" y="44" width="112" height="112" transform="rotate(45 100 100)" stroke="url(#glassCyanGrad)" stroke-width="2" fill="rgba(255, 215, 0, 0.06)"/>
+        <polygon points="100,24 118,82 176,100 118,118 100,176 82,118 24,100 82,82" stroke="url(#glassCyanGrad)" stroke-width="1.4" fill="rgba(255,255,255,0.06)"/>
     </svg>
 
-    <!-- Outer Rotating 16-Point Islamic Arabesque Mandala -->
     <div class="mandala-layer mandala-outer">
         <svg viewBox="0 0 400 400" width="100%" height="100%" fill="none">
             <defs>
                 <linearGradient id="mandalaStroke1" x1="0" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.7"/>
-                    <stop offset="50%" stop-color="#ffffff" stop-opacity="0.4"/>
-                    <stop offset="100%" stop-color="#ffd700" stop-opacity="0.7"/>
+                    <stop offset="0%" stop-color="#38e4ff" stop-opacity="0.8"/>
+                    <stop offset="50%" stop-color="#ffffff" stop-opacity="0.55"/>
+                    <stop offset="100%" stop-color="#ffd700" stop-opacity="0.8"/>
                 </linearGradient>
             </defs>
-            <circle cx="200" cy="200" r="190" stroke="url(#mandalaStroke1)" stroke-width="1.2"/>
-            <circle cx="200" cy="200" r="175" stroke="url(#mandalaStroke1)" stroke-width="0.8" stroke-dasharray="6 6"/>
-            <g stroke="url(#mandalaStroke1)" stroke-width="1.1">
+            <circle cx="200" cy="200" r="190" stroke="url(#mandalaStroke1)" stroke-width="1.4"/>
+            <circle cx="200" cy="200" r="175" stroke="url(#mandalaStroke1)" stroke-width="1" stroke-dasharray="6 6"/>
+            <g stroke="url(#mandalaStroke1)" stroke-width="1.3">
                 <rect x="75" y="75" width="250" height="250"/>
                 <rect x="75" y="75" width="250" height="250" transform="rotate(22.5 200 200)"/>
                 <rect x="75" y="75" width="250" height="250" transform="rotate(45 200 200)"/>
                 <rect x="75" y="75" width="250" height="250" transform="rotate(67.5 200 200)"/>
             </g>
-            <circle cx="200" cy="200" r="122" stroke="url(#mandalaStroke1)" stroke-width="1.2"/>
+            <circle cx="200" cy="200" r="122" stroke="url(#mandalaStroke1)" stroke-width="1.4"/>
         </svg>
     </div>
 
-    <!-- Middle Counter-Rotating 8-Point Islamic Star & Arch Lattice -->
     <div class="mandala-layer mandala-middle">
         <svg viewBox="0 0 300 300" width="100%" height="100%" fill="none">
-            <circle cx="150" cy="150" r="142" stroke="url(#glassCyanGrad)" stroke-width="1.4"/>
-            <rect x="52" y="52" width="196" height="196" stroke="url(#glassCyanGrad)" stroke-width="1.6" fill="rgba(0, 212, 255, 0.02)"/>
-            <rect x="52" y="52" width="196" height="196" transform="rotate(45 150 150)" stroke="url(#glassCyanGrad)" stroke-width="1.6" fill="rgba(255, 215, 0, 0.02)"/>
-            <circle cx="150" cy="150" r="96" stroke="url(#glassCyanGrad)" stroke-width="1.2" stroke-dasharray="3 5"/>
-            <path d="M162 118 A34 34 0 1 0 162 182 A27 27 0 1 1 162 118 Z" stroke="url(#glassCyanGrad)" stroke-width="1.5" fill="rgba(255, 215, 0, 0.08)"/>
-            <polygon points="174,142 177,149 185,149 179,154 181,161 174,157 167,161 169,154 163,149 171,149" stroke="url(#glassCyanGrad)" stroke-width="1.2" fill="rgba(255, 255, 255, 0.2)"/>
+            <circle cx="150" cy="150" r="142" stroke="url(#glassCyanGrad)" stroke-width="1.5"/>
+            <rect x="52" y="52" width="196" height="196" stroke="url(#glassCyanGrad)" stroke-width="1.8" fill="rgba(56, 228, 255, 0.04)"/>
+            <rect x="52" y="52" width="196" height="196" transform="rotate(45 150 150)" stroke="url(#glassCyanGrad)" stroke-width="1.8" fill="rgba(255, 215, 0, 0.04)"/>
+            <circle cx="150" cy="150" r="96" stroke="url(#glassCyanGrad)" stroke-width="1.4" stroke-dasharray="3 5"/>
         </svg>
     </div>
 
-    <!-- Inner Rotating Sacred Rosette -->
     <div class="mandala-layer mandala-inner">
         <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none">
-            <circle cx="100" cy="100" r="92" stroke="url(#glassCyanGrad)" stroke-width="1"/>
-            <polygon points="100,12 122,78 188,100 122,122 100,188 78,122 12,100 78,78" stroke="url(#glassCyanGrad)" stroke-width="1.4" fill="rgba(0, 229, 255, 0.03)"/>
-            <polygon points="100,12 122,78 188,100 122,122 100,188 78,122 12,100 78,78" transform="rotate(45 100 100)" stroke="url(#glassCyanGrad)" stroke-width="1.4"/>
+            <circle cx="100" cy="100" r="92" stroke="url(#glassCyanGrad)" stroke-width="1.2"/>
+            <polygon points="100,12 122,78 188,100 122,122 100,188 78,122 12,100 78,78" stroke="url(#glassCyanGrad)" stroke-width="1.5" fill="rgba(56, 228, 255, 0.05)"/>
         </svg>
     </div>
 </div>
 
-<!-- Minimalist Icon-Only Frosted Glass Audio Button (No Text) -->
-<button id="soundToggleBtn" class="sound-toggle-btn" onclick="toggleGlassSound()" aria-label="Toggle Islamic Ambient Tune">
+<!-- Top-Right Audio Toggle Button for Kun Anta Nasheed / Ambient -->
+<button id="soundToggleBtn" class="sound-toggle-btn" onclick="toggleNasheedAudio()" aria-label="Toggle Kun Anta Nasheed">
     <svg id="soundIconOn" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
         <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
@@ -668,11 +973,11 @@
         <div class="profile-header" id="profileHeaderCard">
             <div class="profile-img-wrapper">
                 <div class="profile-img-border">
-                    <img src="anik.jpg" alt="AR Anik" class="profile-img" onerror="this.src='https://placehold.co/100x100/0b2538/ffd700?text=AR+Anik'">
+                    <img src="anik.jpg" alt="AR Anik" class="profile-img" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%230e7490%22/><stop offset=%22100%25%22 stop-color=%22%2306283d%22/></linearGradient></defs><rect width=%22100%22 height=%22100%22 fill=%22url(%23g)%22/><text x=%2250%22 y=%2258%22 font-family=%22serif%22 font-size=%2232%22 font-weight=%22bold%22 fill=%22%23ffd700%22 text-anchor=%22middle%22>AR</text></svg>';">
                 </div>
             </div>
             <h1 class="website-title">আলোর পথে</h1>
-            <div class="website-subtitle">কুরআন, হাদিস ও ইসলামিক জীবনদর্শন</div>
+            <div class="website-subtitle">ইসলামিক জ্ঞান ও জীবনদর্শন</div>
             <div class="author-info">
                 <div class="author-name">AR Anik</div>
                 <div class="author-phone">01923-968643</div>
@@ -683,7 +988,7 @@
     <div class="card-grid">
         <div class="card" onclick="playGlassClick(); openSurahListModal()" onmouseenter="playGlassHover(0)">
             <svg class="card-geo-watermark" viewBox="0 0 100 100" fill="none">
-                <rect x="22" y="22" width="56" height="56" stroke="#00e5ff" stroke-width="1.5"/>
+                <rect x="22" y="22" width="56" height="56" stroke="#38e4ff" stroke-width="1.5"/>
                 <rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)" stroke="#ffd700" stroke-width="1.5"/>
             </svg>
             <span class="card-number">01</span>
@@ -691,7 +996,7 @@
         </div>
         <div class="card" onclick="playGlassClick(); openHadithModal()" onmouseenter="playGlassHover(1)">
             <svg class="card-geo-watermark" viewBox="0 0 100 100" fill="none">
-                <rect x="22" y="22" width="56" height="56" stroke="#00e5ff" stroke-width="1.5"/>
+                <rect x="22" y="22" width="56" height="56" stroke="#38e4ff" stroke-width="1.5"/>
                 <rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)" stroke="#ffd700" stroke-width="1.5"/>
             </svg>
             <span class="card-number">02</span>
@@ -699,7 +1004,7 @@
         </div>
         <div class="card" onclick="playGlassClick(); openSalatModal()" onmouseenter="playGlassHover(2)">
             <svg class="card-geo-watermark" viewBox="0 0 100 100" fill="none">
-                <rect x="22" y="22" width="56" height="56" stroke="#00e5ff" stroke-width="1.5"/>
+                <rect x="22" y="22" width="56" height="56" stroke="#38e4ff" stroke-width="1.5"/>
                 <rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)" stroke="#ffd700" stroke-width="1.5"/>
             </svg>
             <span class="card-number">03</span>
@@ -707,7 +1012,7 @@
         </div>
         <div class="card" onclick="playGlassClick(); openIslamImportanceModal()" onmouseenter="playGlassHover(3)">
             <svg class="card-geo-watermark" viewBox="0 0 100 100" fill="none">
-                <rect x="22" y="22" width="56" height="56" stroke="#00e5ff" stroke-width="1.5"/>
+                <rect x="22" y="22" width="56" height="56" stroke="#38e4ff" stroke-width="1.5"/>
                 <rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)" stroke="#ffd700" stroke-width="1.5"/>
             </svg>
             <span class="card-number">04</span>
@@ -715,7 +1020,7 @@
         </div>
         <div class="card" onclick="playGlassClick(); openMyLifeModal()" onmouseenter="playGlassHover(4)">
             <svg class="card-geo-watermark" viewBox="0 0 100 100" fill="none">
-                <rect x="22" y="22" width="56" height="56" stroke="#00e5ff" stroke-width="1.5"/>
+                <rect x="22" y="22" width="56" height="56" stroke="#38e4ff" stroke-width="1.5"/>
                 <rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)" stroke="#ffd700" stroke-width="1.5"/>
             </svg>
             <span class="card-number">05</span>
@@ -739,28 +1044,17 @@
 
 <script>
     // =========================================================
-    // SERENE ISLAMIC AMBIENT TUNE & GLASSY UI SOUND ENGINE
-    // (Hijaz / Bayati Spiritual Maqam + Crystal Chimes)
+    // KUN ANTA NASHEED & SYNTHESIZED SOUND ENGINE
     // =========================================================
     let audioCtx = null;
     let soundEnabled = true;
-    let ambientRunning = false;
-    let ambientPausedForSpeech = false;
-    let ambientLoopTimer = null;
-    let ambientMasterGain = null;
-    let melodyStep = 0;
-
-    // Hijaz Maqam Frequencies (D4, Eb4, F#4, G4, A4, Bb4, C5, D5)
-    const hijazScale = [293.66, 311.13, 369.99, 392.00, 440.00, 466.16, 523.25, 587.33];
-    // Spiritual meditative phrase pattern
-    const spiritualPhrase = [0, 3, 4, 5, 4, 3, 2, 1, 0, 4, 7, 5, 4, 2, 1, 0];
+    let nasheedPlaying = false;
+    let nasheedPausedForSpeech = false;
 
     function initAudioContext() {
         if (!audioCtx) {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
-            if (AudioContext) {
-                audioCtx = new AudioContext();
-            }
+            if (AudioContext) audioCtx = new AudioContext();
         }
         if (audioCtx && audioCtx.state === 'suspended') {
             audioCtx.resume();
@@ -772,11 +1066,13 @@
         const iconOn = document.getElementById('soundIconOn');
         const iconOff = document.getElementById('soundIconOff');
         if (!btn) return;
-        if (soundEnabled) {
+        if (soundEnabled && nasheedPlaying) {
             btn.classList.remove('muted');
-            if (ambientRunning && !ambientPausedForSpeech) {
-                btn.classList.add('active-playing');
-            }
+            btn.classList.add('active-playing');
+            iconOn.style.display = 'block';
+            iconOff.style.display = 'none';
+        } else if (soundEnabled && !nasheedPlaying) {
+            btn.classList.remove('muted', 'active-playing');
             iconOn.style.display = 'block';
             iconOff.style.display = 'none';
         } else {
@@ -787,154 +1083,60 @@
         }
     }
 
-    function startIslamicAmbientTune() {
-        if (!soundEnabled || ambientRunning || ambientPausedForSpeech) return;
+    function toggleNasheedAudio() {
         initAudioContext();
-        if (!audioCtx) return;
+        const audioElem = document.getElementById('kunAntaAudio');
+        if (!audioElem) return;
 
-        ambientRunning = true;
-        ambientMasterGain = audioCtx.createGain();
-        ambientMasterGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-        ambientMasterGain.gain.linearRampToValueAtTime(0.85, audioCtx.currentTime + 1.8);
-        ambientMasterGain.connect(audioCtx.destination);
-
-        // Warm spiritual drone pad (D3 & A3)
-        const droneFreqs = [146.83, 220.00];
-        const droneNodes = droneFreqs.map(freq => {
-            const osc = audioCtx.createOscillator();
-            const filter = audioCtx.createBiquadFilter();
-            const gain = audioCtx.createGain();
-
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-            filter.type = 'lowpass';
-            filter.frequency.setValueAtTime(420, audioCtx.currentTime);
-
-            gain.gain.setValueAtTime(0.028, audioCtx.currentTime);
-
-            osc.connect(filter);
-            filter.connect(gain);
-            gain.connect(ambientMasterGain);
-            osc.start();
-            return { osc, gain };
-        });
-
-        ambientMasterGain._droneNodes = droneNodes;
-
-        // Gentle Ney-flute & crystal arpeggio melodic loop
-        function playNextSpiritualNote() {
-            if (!ambientRunning || !soundEnabled || ambientPausedForSpeech || !audioCtx) return;
-            const now = audioCtx.currentTime;
-            const noteIdx = spiritualPhrase[melodyStep % spiritualPhrase.length];
-            const freq = hijazScale[noteIdx];
-            melodyStep++;
-
-            // Soft breathy Ney-like voice
-            const neyOsc = audioCtx.createOscillator();
-            const neyFilter = audioCtx.createBiquadFilter();
-            const neyGain = audioCtx.createGain();
-
-            neyOsc.type = 'triangle';
-            neyOsc.frequency.setValueAtTime(freq, now);
-            // Subtle expressive vibrato
-            neyOsc.frequency.linearRampToValueAtTime(freq * 1.004, now + 0.6);
-            neyOsc.frequency.linearRampToValueAtTime(freq, now + 1.2);
-
-            neyFilter.type = 'lowpass';
-            neyFilter.frequency.setValueAtTime(780, now);
-
-            neyGain.gain.setValueAtTime(0.0001, now);
-            neyGain.gain.linearRampToValueAtTime(0.032, now + 0.35);
-            neyGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.55);
-
-            neyOsc.connect(neyFilter);
-            neyFilter.connect(neyGain);
-            neyGain.connect(ambientMasterGain);
-
-            neyOsc.start(now);
-            neyOsc.stop(now + 1.6);
-
-            // Delicate crystalline harmonic sparkle every 2nd note
-            if (melodyStep % 2 === 0) {
-                const chimeOsc = audioCtx.createOscillator();
-                const chimeGain = audioCtx.createGain();
-                chimeOsc.type = 'sine';
-                chimeOsc.frequency.setValueAtTime(freq * 2, now + 0.15);
-
-                chimeGain.gain.setValueAtTime(0.0001, now + 0.15);
-                chimeGain.gain.linearRampToValueAtTime(0.016, now + 0.18);
-                chimeGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
-
-                chimeOsc.connect(chimeGain);
-                chimeGain.connect(ambientMasterGain);
-                chimeOsc.start(now + 0.15);
-                chimeOsc.stop(now + 1.25);
-            }
-
-            ambientLoopTimer = setTimeout(playNextSpiritualNote, 1350);
-        }
-
-        playNextSpiritualNote();
-        updateSoundIconUI();
-    }
-
-    function stopIslamicAmbientTune() {
-        ambientRunning = false;
-        if (ambientLoopTimer) {
-            clearTimeout(ambientLoopTimer);
-            ambientLoopTimer = null;
-        }
-        if (ambientMasterGain && audioCtx) {
-            try {
-                const now = audioCtx.currentTime;
-                ambientMasterGain.gain.setValueAtTime(ambientMasterGain.gain.value, now);
-                ambientMasterGain.gain.linearRampToValueAtTime(0.0001, now + 0.35);
-                const nodes = ambientMasterGain._droneNodes || [];
-                setTimeout(() => {
-                    nodes.forEach(n => {
-                        try { n.osc.stop(); } catch (e) {}
-                    });
-                }, 400);
-            } catch (e) {}
-            ambientMasterGain = null;
-        }
-        updateSoundIconUI();
-    }
-
-    function pauseAmbientForSpeech() {
-        if (ambientRunning) {
-            ambientPausedForSpeech = true;
-            stopIslamicAmbientTune();
-        }
-    }
-
-    function resumeAmbientAfterSpeech() {
-        if (ambientPausedForSpeech) {
-            ambientPausedForSpeech = false;
-            if (soundEnabled) {
-                startIslamicAmbientTune();
-            }
-        }
-    }
-
-    function toggleGlassSound() {
-        initAudioContext();
-        soundEnabled = !soundEnabled;
-        if (soundEnabled) {
-            ambientPausedForSpeech = false;
-            startIslamicAmbientTune();
-            playGlassChord();
+        if (nasheedPlaying) {
+            audioElem.pause();
+            nasheedPlaying = false;
+            soundEnabled = false;
         } else {
-            stopIslamicAmbientTune();
+            audioElem.volume = 0.55;
+            audioElem.play().then(() => {
+                nasheedPlaying = true;
+                soundEnabled = true;
+                nasheedPausedForSpeech = false;
+                playGlassChord();
+            }).catch(() => {
+                soundEnabled = false;
+            });
         }
         updateSoundIconUI();
     }
 
-    // Auto-start serene Islamic tune on first user interaction
+    function pauseNasheedForSpeech() {
+        const audioElem = document.getElementById('kunAntaAudio');
+        if (audioElem && nasheedPlaying) {
+            audioElem.pause();
+            nasheedPausedForSpeech = true;
+            nasheedPlaying = false;
+            updateSoundIconUI();
+        }
+    }
+
+    function resumeNasheedAfterSpeech() {
+        const audioElem = document.getElementById('kunAntaAudio');
+        if (audioElem && nasheedPausedForSpeech) {
+            audioElem.play().then(() => {
+                nasheedPlaying = true;
+                nasheedPausedForSpeech = false;
+                updateSoundIconUI();
+            }).catch(() => {});
+        }
+    }
+
+    // Auto-start Kun Anta nasheed on first interaction
     function handleFirstInteraction() {
-        if (soundEnabled && !ambientRunning && !ambientPausedForSpeech) {
-            startIslamicAmbientTune();
+        const audioElem = document.getElementById('kunAntaAudio');
+        if (audioElem && !nasheedPlaying && !nasheedPausedForSpeech) {
+            audioElem.volume = 0.5;
+            audioElem.play().then(() => {
+                nasheedPlaying = true;
+                soundEnabled = true;
+                updateSoundIconUI();
+            }).catch(() => {});
         }
         window.removeEventListener('pointerdown', handleFirstInteraction);
         window.removeEventListener('keydown', handleFirstInteraction);
@@ -942,9 +1144,9 @@
     window.addEventListener('pointerdown', handleFirstInteraction);
     window.addEventListener('keydown', handleFirstInteraction);
 
-    // Delicate crystal bell chime on card hover
+    // Crystal Chime on Hover
     function playGlassHover(index = 0) {
-        if (!soundEnabled) return;
+        if (!soundEnabled && !nasheedPlaying) return;
         try {
             initAudioContext();
             if (!audioCtx) return;
@@ -953,91 +1155,67 @@
             const baseFreq = freqs[index % freqs.length];
 
             const osc = audioCtx.createOscillator();
-            const overtone = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
-            const overtoneGain = audioCtx.createGain();
 
             osc.type = 'sine';
             osc.frequency.setValueAtTime(baseFreq, now);
-            osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.012, now + 0.16);
-
-            overtone.type = 'triangle';
-            overtone.frequency.setValueAtTime(baseFreq * 2.5, now);
 
             gain.gain.setValueAtTime(0.0001, now);
-            gain.gain.linearRampToValueAtTime(0.045, now + 0.012);
-            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.34);
-
-            overtoneGain.gain.setValueAtTime(0.0001, now);
-            overtoneGain.gain.linearRampToValueAtTime(0.012, now + 0.008);
-            overtoneGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.16);
+            gain.gain.linearRampToValueAtTime(0.035, now + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.28);
 
             osc.connect(gain);
-            overtone.connect(overtoneGain);
             gain.connect(audioCtx.destination);
-            overtoneGain.connect(audioCtx.destination);
-
             osc.start(now);
-            overtone.start(now);
-            osc.stop(now + 0.36);
-            overtone.stop(now + 0.18);
+            osc.stop(now + 0.3);
         } catch (e) {}
     }
 
-    // Tactile crystal glass tap + shimmering harmonic when clicking
     function playGlassClick() {
-        if (!soundEnabled) return;
         try {
             initAudioContext();
             if (!audioCtx) return;
-            if (!ambientRunning && !ambientPausedForSpeech) {
-                startIslamicAmbientTune();
-            }
             const now = audioCtx.currentTime;
-
             const tapOsc = audioCtx.createOscillator();
             const tapGain = audioCtx.createGain();
             tapOsc.type = 'sine';
-            tapOsc.frequency.setValueAtTime(1850, now);
-            tapOsc.frequency.exponentialRampToValueAtTime(620, now + 0.06);
+            tapOsc.frequency.setValueAtTime(1750, now);
+            tapOsc.frequency.exponentialRampToValueAtTime(580, now + 0.05);
 
-            tapGain.gain.setValueAtTime(0.075, now);
-            tapGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.07);
+            tapGain.gain.setValueAtTime(0.065, now);
+            tapGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.06);
 
             tapOsc.connect(tapGain);
             tapGain.connect(audioCtx.destination);
             tapOsc.start(now);
-            tapOsc.stop(now + 0.08);
+            tapOsc.stop(now + 0.07);
 
             playGlassChord();
         } catch (e) {}
     }
 
-    // Ethereal 3D frosted glass open chord (Hijaz harmonic)
     function playGlassChord() {
-        if (!soundEnabled || !audioCtx) return;
+        if (!audioCtx) return;
         const now = audioCtx.currentTime;
-        const notes = [587.33, 739.99, 880.00, 1174.66]; // D5, F#5, A5, D6
+        const notes = [587.33, 739.99, 880.00];
         notes.forEach((freq, idx) => {
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, now + idx * 0.035);
+            osc.frequency.setValueAtTime(freq, now + idx * 0.03);
 
-            gain.gain.setValueAtTime(0.0001, now + idx * 0.035);
-            gain.gain.linearRampToValueAtTime(0.038, now + idx * 0.035 + 0.015);
-            gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.035 + 0.52);
+            gain.gain.setValueAtTime(0.0001, now + idx * 0.03);
+            gain.gain.linearRampToValueAtTime(0.03, now + idx * 0.03 + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.03 + 0.4);
 
             osc.connect(gain);
             gain.connect(audioCtx.destination);
-            osc.start(now + idx * 0.035);
-            osc.stop(now + idx * 0.035 + 0.55);
+            osc.start(now + idx * 0.03);
+            osc.stop(now + idx * 0.03 + 0.45);
         });
     }
 
-    // Soft downward glass chime when closing modal
     function playGlassClose() {
-        if (!soundEnabled) return;
         try {
             initAudioContext();
             if (!audioCtx) return;
@@ -1047,21 +1225,19 @@
 
             osc.type = 'sine';
             osc.frequency.setValueAtTime(1174.66, now);
-            osc.frequency.exponentialRampToValueAtTime(587.33, now + 0.22);
+            osc.frequency.exponentialRampToValueAtTime(587.33, now + 0.2);
 
-            gain.gain.setValueAtTime(0.055, now);
-            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.25);
+            gain.gain.setValueAtTime(0.045, now);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
 
             osc.connect(gain);
             gain.connect(audioCtx.destination);
             osc.start(now);
-            osc.stop(now + 0.26);
+            osc.stop(now + 0.23);
         } catch (e) {}
     }
 
-    // =========================================================
-    // 3D MOUSE PARALLAX & INTERACTIVE CARD TILT
-    // =========================================================
+    // 3D Mouse Parallax Tilt
     document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
@@ -1071,16 +1247,15 @@
             const centerY = rect.height / 2;
             const rotateX = ((y - centerY) / centerY) * -12;
             const rotateY = ((x - centerX) / centerX) * 12;
-            card.style.transform = `translateY(-14px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            card.style.transform = `translateY(-12px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
         });
-
         card.addEventListener('mouseleave', () => {
             card.style.transform = '';
         });
     });
 
     // =========================================================
-    // APPLICATION DATA & API LOGIC (PRESERVED & ENHANCED)
+    // APP DATA & MODAL LOGIC
     // =========================================================
     let surahCache = [];
 
@@ -1092,27 +1267,19 @@
     }
 
     function closeModal() {
-        if (window.responsiveVoice) {
-            responsiveVoice.cancel();
-        }
-        if (window.speechSynthesis) {
-            window.speechSynthesis.cancel();
-        }
-        resumeAmbientAfterSpeech();
+        if (window.responsiveVoice) responsiveVoice.cancel();
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+        resumeNasheedAfterSpeech();
         document.getElementById('infoModal').style.display = 'none';
     }
 
-    // ---------------------------------------------------------
-    // CARD 1: SURAH & TAFSIR
-    // ---------------------------------------------------------
+    // 1. Surah Modal
     async function openSurahListModal() {
         openModal("সূরা তালিকা (১১৪টি সূরা)", "<p style='text-align:center;'>সূরা তালিকা লোড করা হচ্ছে...</p>");
-
         if (surahCache.length > 0) {
             renderSurahGrid(surahCache);
             return;
         }
-
         try {
             const res = await fetch("https://api.alquran.cloud/v1/surah");
             const data = await res.json();
@@ -1121,7 +1288,7 @@
                 renderSurahGrid(surahCache);
             }
         } catch (e) {
-            document.getElementById('modalBody').innerHTML = "<p style='color:#ff6b6b; text-align:center;'>নেটওয়ার্ক সমস্যা। আবার চেষ্টা করুন।</p>";
+            document.getElementById('modalBody').innerHTML = "<p style='color:#ff8787; text-align:center;'>নেটওয়ার্ক সমস্যা। আবার চেষ্টা করুন।</p>";
         }
     }
 
@@ -1180,7 +1347,7 @@
                         </div>
                         <div class="arabic-text">${ayah.text}</div>
                         <div class="translation"><strong>অর্থ:</strong> ${bnData.data.ayahs[i].text}</div>
-                        <audio controls class="audio-player" preload="none" onplay="pauseAmbientForSpeech()" onpause="resumeAmbientAfterSpeech()" onended="resumeAmbientAfterSpeech()">
+                        <audio controls class="audio-player" preload="none" onplay="pauseNasheedForSpeech()" onpause="resumeNasheedAfterSpeech()" onended="resumeNasheedAfterSpeech()">
                             <source src="${ayah.audio}" type="audio/mpeg">
                         </audio>
                     </div>
@@ -1188,13 +1355,11 @@
             });
             document.getElementById('modalBody').innerHTML = html;
         } catch (e) {
-            document.getElementById('modalBody').innerHTML = "<p style='color:#ff6b6b; text-align:center;'>আয়াত বা অডিও লোড করা যায়নি।</p>";
+            document.getElementById('modalBody').innerHTML = "<p style='color:#ff8787; text-align:center;'>আয়াত বা অডিও লোড করা যায়নি।</p>";
         }
     }
 
-    // ---------------------------------------------------------
-    // CARD 2: HADITH WITH RESPONSIVE VOICE AUDIO ENGINE
-    // ---------------------------------------------------------
+    // 2. Hadith Modal
     async function openHadithModal() {
         openModal("সহিহ হাদিস শরিফ", "<p style='text-align:center;'>হাদিস নির্বাচন করুন...</p>");
         let html = `
@@ -1219,7 +1384,6 @@
             const res = await fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ben-${bookKey}.json`);
             const data = await res.json();
             const random = data.hadiths[Math.floor(Math.random() * data.hadiths.length)];
-            
             currentHadithText = random.text;
 
             document.getElementById('hadithContent').innerHTML = `
@@ -1249,13 +1413,13 @@
 
     function playHadithAudio() {
         const statusEl = document.getElementById('ttsStatusMsg');
-        pauseAmbientForSpeech();
+        pauseNasheedForSpeech();
         if (window.responsiveVoice && typeof responsiveVoice.speak === 'function') {
             responsiveVoice.speak(currentHadithText, "Bengali Female", {
                 rate: 0.9,
                 pitch: 1,
-                onend: () => resumeAmbientAfterSpeech(),
-                onerror: () => resumeAmbientAfterSpeech()
+                onend: () => resumeNasheedAfterSpeech(),
+                onerror: () => resumeNasheedAfterSpeech()
             });
             if (statusEl) statusEl.innerText = "হাদিস পাঠ করা হচ্ছে...";
         } else if ('speechSynthesis' in window) {
@@ -1263,27 +1427,25 @@
             const utterance = new SpeechSynthesisUtterance(currentHadithText);
             utterance.lang = 'bn-BD';
             utterance.rate = 0.9;
-            utterance.onend = () => resumeAmbientAfterSpeech();
-            utterance.onerror = () => resumeAmbientAfterSpeech();
+            utterance.onend = () => resumeNasheedAfterSpeech();
+            utterance.onerror = () => resumeNasheedAfterSpeech();
             window.speechSynthesis.speak(utterance);
             if (statusEl) statusEl.innerText = "হাদিস পাঠ করা হচ্ছে...";
         } else {
-            resumeAmbientAfterSpeech();
-            if (statusEl) statusEl.innerText = "ভয়েস এপিআই লোড হতে সমস্যা হয়েছে। ইন্টারনেট কানেকশন চেক করুন।";
+            resumeNasheedAfterSpeech();
+            if (statusEl) statusEl.innerText = "ভয়েস এপিআই লোড হতে সমস্যা হয়েছে।";
         }
     }
 
     function stopHadithAudio() {
         if (window.responsiveVoice) responsiveVoice.cancel();
         if (window.speechSynthesis) window.speechSynthesis.cancel();
-        resumeAmbientAfterSpeech();
+        resumeNasheedAfterSpeech();
         const statusEl = document.getElementById('ttsStatusMsg');
         if (statusEl) statusEl.innerText = "";
     }
 
-    // ---------------------------------------------------------
-    // CARD 3: SALAT & SAWM WITH LIVE AUTO-UPDATED TIMINGS
-    // ---------------------------------------------------------
+    // 3. Salat Modal
     async function openSalatModal() {
         openModal("সালাত ও সিয়ামের সময়সূচী ও ব্যাখ্যা", "<p style='text-align:center;'>আজকের অটো-আপডেট হওয়া নামাজের সময়সূচী লোড করা হচ্ছে...</p>");
         try {
@@ -1315,13 +1477,11 @@
             `;
             document.getElementById('modalBody').innerHTML = html;
         } catch (e) {
-            document.getElementById('modalBody').innerHTML = "<p style='color:#ff6b6b; text-align:center;'>সময়সূচী লোড করা যায়নি।</p>";
+            document.getElementById('modalBody').innerHTML = "<p style='color:#ff8787; text-align:center;'>সময়সূচী লোড করা যায়নি।</p>";
         }
     }
 
-    // ---------------------------------------------------------
-    // CARD 4 & 5
-    // ---------------------------------------------------------
+    // 4 & 5. Islam Importance & My Life
     function openIslamImportanceModal() {
         let html = `
             <div class="verse-box">
