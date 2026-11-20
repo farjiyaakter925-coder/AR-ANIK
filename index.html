@@ -817,10 +817,11 @@
 </head>
 <body>
 
-<!-- Hidden Audio Element for "Kun Anta" Nasheed (Humood Alkhudher) -->
-<audio id="kunAntaAudio" preload="auto" loop>
-    <source src="https://cdns.islamway.net/lessons/arabic/462/11_KunAnta.mp3" type="audio/mpeg">
+<!-- Hidden Audio Element for "Kun Anta" Nasheed / Recitation with reliable sources -->
+<audio id="kunAntaAudio" preload="auto" loop crossorigin="anonymous">
     <source src="https://download.quranicaudio.com/quran/mishary_al_afasy/001.mp3" type="audio/mpeg">
+    <source src="https://server8.mp3quran.net/afs/001.mp3" type="audio/mpeg">
+    <source src="https://cdns.islamway.net/lessons/arabic/462/11_KunAnta.mp3" type="audio/mpeg">
 </audio>
 
 <!-- Background Cosmic Stage -->
@@ -1044,12 +1045,19 @@
 
 <script>
     // =========================================================
-    // KUN ANTA NASHEED & SYNTHESIZED SOUND ENGINE
+    // KUN ANTA NASHEED & SYNTHESIZED SOUND ENGINE (ENHANCED PLAYBACK)
     // =========================================================
     let audioCtx = null;
     let soundEnabled = true;
     let nasheedPlaying = false;
     let nasheedPausedForSpeech = false;
+    let currentSourceIndex = 0;
+
+    const nasheedSources = [
+        "https://download.quranicaudio.com/quran/mishary_al_afasy/001.mp3",
+        "https://server8.mp3quran.net/afs/001.mp3",
+        "https://cdns.islamway.net/lessons/arabic/462/11_KunAnta.mp3"
+    ];
 
     function initAudioContext() {
         if (!audioCtx) {
@@ -1057,7 +1065,7 @@
             if (AudioContext) audioCtx = new AudioContext();
         }
         if (audioCtx && audioCtx.state === 'suspended') {
-            audioCtx.resume();
+            audioCtx.resume().catch(() => {});
         }
     }
 
@@ -1083,32 +1091,51 @@
         }
     }
 
+    function tryPlayAudioElement(audioElem) {
+        if (!audioElem) return Promise.reject();
+        audioElem.volume = 0.55;
+        if (!audioElem.src || audioElem.src === window.location.href) {
+            audioElem.src = nasheedSources[currentSourceIndex % nasheedSources.length];
+            audioElem.load();
+        }
+        return audioElem.play().catch(() => {
+            currentSourceIndex++;
+            if (currentSourceIndex < nasheedSources.length) {
+                audioElem.src = nasheedSources[currentSourceIndex];
+                audioElem.load();
+                return audioElem.play();
+            }
+            return Promise.reject();
+        });
+    }
+
     function toggleNasheedAudio() {
         initAudioContext();
         const audioElem = document.getElementById('kunAntaAudio');
         if (!audioElem) return;
 
-        if (nasheedPlaying) {
+        if (nasheedPlaying || !audioElem.paused) {
             audioElem.pause();
             nasheedPlaying = false;
             soundEnabled = false;
+            updateSoundIconUI();
         } else {
-            audioElem.volume = 0.55;
-            audioElem.play().then(() => {
+            soundEnabled = true;
+            tryPlayAudioElement(audioElem).then(() => {
                 nasheedPlaying = true;
-                soundEnabled = true;
                 nasheedPausedForSpeech = false;
                 playGlassChord();
+                updateSoundIconUI();
             }).catch(() => {
-                soundEnabled = false;
+                nasheedPlaying = false;
+                updateSoundIconUI();
             });
         }
-        updateSoundIconUI();
     }
 
     function pauseNasheedForSpeech() {
         const audioElem = document.getElementById('kunAntaAudio');
-        if (audioElem && nasheedPlaying) {
+        if (audioElem && (nasheedPlaying || !audioElem.paused)) {
             audioElem.pause();
             nasheedPausedForSpeech = true;
             nasheedPlaying = false;
@@ -1118,8 +1145,8 @@
 
     function resumeNasheedAfterSpeech() {
         const audioElem = document.getElementById('kunAntaAudio');
-        if (audioElem && nasheedPausedForSpeech) {
-            audioElem.play().then(() => {
+        if (audioElem && nasheedPausedForSpeech && soundEnabled) {
+            tryPlayAudioElement(audioElem).then(() => {
                 nasheedPlaying = true;
                 nasheedPausedForSpeech = false;
                 updateSoundIconUI();
@@ -1127,21 +1154,49 @@
         }
     }
 
-    // Auto-start Kun Anta nasheed on first interaction
-    function handleFirstInteraction() {
+    // Keep state synced with native audio events
+    document.addEventListener('DOMContentLoaded', () => {
         const audioElem = document.getElementById('kunAntaAudio');
-        if (audioElem && !nasheedPlaying && !nasheedPausedForSpeech) {
-            audioElem.volume = 0.5;
-            audioElem.play().then(() => {
+        if (audioElem) {
+            audioElem.src = nasheedSources[0];
+            audioElem.addEventListener('play', () => {
                 nasheedPlaying = true;
                 soundEnabled = true;
+                updateSoundIconUI();
+            });
+            audioElem.addEventListener('pause', () => {
+                nasheedPlaying = false;
+                updateSoundIconUI();
+            });
+            audioElem.addEventListener('error', () => {
+                if (currentSourceIndex < nasheedSources.length - 1) {
+                    currentSourceIndex++;
+                    audioElem.src = nasheedSources[currentSourceIndex];
+                    audioElem.load();
+                    if (soundEnabled && !nasheedPausedForSpeech) {
+                        audioElem.play().catch(() => {});
+                    }
+                }
+            });
+        }
+    });
+
+    // Auto-start nasheed on first interaction
+    function handleFirstInteraction() {
+        initAudioContext();
+        const audioElem = document.getElementById('kunAntaAudio');
+        if (audioElem && soundEnabled && !nasheedPlaying && !nasheedPausedForSpeech) {
+            tryPlayAudioElement(audioElem).then(() => {
+                nasheedPlaying = true;
                 updateSoundIconUI();
             }).catch(() => {});
         }
         window.removeEventListener('pointerdown', handleFirstInteraction);
+        window.removeEventListener('click', handleFirstInteraction);
         window.removeEventListener('keydown', handleFirstInteraction);
     }
     window.addEventListener('pointerdown', handleFirstInteraction);
+    window.addEventListener('click', handleFirstInteraction);
     window.addEventListener('keydown', handleFirstInteraction);
 
     // Crystal Chime on Hover
@@ -1458,12 +1513,12 @@
                 <div class="verse-box" style="margin-bottom:20px;">
                     <div class="verse-num">আজকের সালাতের সময়সূচী (${readableDate} - ঢাকা):</div>
                     <p style="line-height:2; font-size:15px; margin-top:10px;">
-                        • <strong>ফজর:</strong> ${t.Fajr} AM<br>
-                        • <strong>সূর্যোদয়:</strong> ${t.Sunrise} AM<br>
-                        • <strong>যোহোর:</strong> ${t.Dhuhr} PM<br>
-                        • <strong>আসর:</strong> ${t.Asr} PM<br>
-                        • <strong>মাগরিব (ইফতার):</strong> ${t.Maghrib} PM<br>
-                        • <strong>ইশা:</strong> ${t.Isha} PM
+- <strong>ফজর:</strong> ${t.Fajr} AM<br>
+- <strong>সূর্যোদয়:</strong> ${t.Sunrise} AM<br>
+- <strong>যোহোর:</strong> ${t.Dhuhr} PM<br>
+- <strong>আসর:</strong> ${t.Asr} PM<br>
+- <strong>মাগরিব (ইফতার):</strong> ${t.Maghrib} PM<br>
+- <strong>ইশা:</strong> ${t.Isha} PM
                     </p>
                 </div>
                 <div class="verse-box">
