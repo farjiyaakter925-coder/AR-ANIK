@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUTEX Admission Verification Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        butex: {
+                            navy: '#0f2942',
+                            navyDark: '#091a2b',
+                            maroon: '#8b1e24',
+                            maroonHover: '#72161b',
+                            bg: '#f3f5f8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-butex-bg text-slate-800 font-sans min-h-screen flex flex-col antialiased selection:bg-butex-navy selection:text-white">
+
+    <!-- Top Official Institutional Bar -->
+    <div class="bg-butex-navyDark text-slate-200 text-xs py-2 px-4 border-b border-slate-700/60 print:hidden">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1">
+            <span class="font-medium tracking-wide">Tejgaon Industrial Area, Dhaka-1208, Bangladesh</span>
+            <span class="text-slate-300">Admission Helpline: <strong class="text-white font-semibold">+880-2-9114260</strong></span>
+        </div>
+    </div>
+
+    <!-- Main University Header -->
+    <header class="bg-butex-navy text-white shadow-md border-b-4 border-butex-maroon">
+        <div class="max-w-5xl mx-auto px-4 py-5 sm:py-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-center sm:text-left">
+            
+            <!-- University Logo Container (Loads butex.jpg with automatic SVG Emblem Fallback) -->
+            <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white p-1.5 shadow-lg flex items-center justify-center shrink-0 ring-2 ring-white/20 overflow-hidden">
+                <img 
+                    id="butex-logo-img"
+                    src="butex.jpg" 
+                    alt="BUTEX Official Logo" 
+                    class="w-full h-full object-contain rounded-full"
+                    onerror="this.classList.add('hidden'); document.getElementById('butex-fallback-crest').classList.remove('hidden');"
+                >
+                <!-- Official SVG Crest Fallback when butex.jpg is not present in directory -->
+                <div id="butex-fallback-crest" class="hidden w-full h-full flex items-center justify-center">
+                    <svg viewBox="0 0 120 120" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="60" cy="60" r="56" fill="#0f2942" stroke="#8b1e24" stroke-width="5"/>
+                        <circle cx="60" cy="60" r="46" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="3 2"/>
+                        <!-- Gear & Shuttle Motif -->
+                        <path d="M60 22 L65 32 L76 30 L74 41 L84 47 L76 55 L81 65 L70 67 L68 78 L60 72 L52 78 L50 67 L39 65 L44 55 L36 47 L46 41 L44 30 L55 32 Z" fill="none" stroke="#f8fafc" stroke-width="2.2"/>
+                        <!-- Open Book / Fabric Weave -->
+                        <path d="M44 54 Q60 48 76 54 L76 68 Q60 62 44 68 Z" fill="#8b1e24" stroke="#ffffff" stroke-width="1.5"/>
+                        <line x1="60" y1="51" x2="60" y2="65" stroke="#ffffff" stroke-width="1.5"/>
+                        <text x="60" y="94" font-family="Inter, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">BUTEX</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- University Title & Subtitle -->
+            <div class="flex-1">
+                <div class="inline-block px-2.5 py-0.5 rounded-full bg-butex-maroon/90 text-white text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+                    Official Admission Portal
+                </div>
+                <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-white leading-tight">
+                    Bangladesh University of Textiles (BUTEX)
+                </h1>
+                <p class="text-slate-200 text-xs sm:text-sm md:text-base font-medium mt-1">
+                    Undergraduate Admission Test &mdash; Application &amp; Payment Verification Portal
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-3xl w-full mx-auto px-4 py-8 sm:py-10">
+        
+        <!-- Verification Search Card -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden print:hidden">
+            <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-butex-maroon"></span>
+                    <h2 class="text-base sm:text-lg font-bold text-butex-navy">Applicant Status Verification</h2>
+                </div>
+                <span class="text-xs font-medium text-slate-500 bg-white px-2.5 py-1 rounded-md border border-slate-200">
+                    Session: 2025&ndash;2026
+                </span>
+            </div>
+
+            <form id="verification-form" class="p-6 sm:p-8 space-y-5" novalidate>
+                <div>
+                    <label for="mobile-input" class="block text-sm font-semibold text-slate-700 mb-2">
+                        Applicant Mobile Number / Tracking ID <span class="text-butex-maroon">*</span>
+                    </label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <!-- Phone Icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                        </div>
+                        <input 
+                            type="text" 
+                            id="mobile-input" 
+                            name="mobile"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            placeholder="Enter 11-digit mobile number (e.g., 01300057533)" 
+                            class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-medium placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-butex-navy focus:border-butex-navy focus:bg-white transition-all text-base"
+                            required
+                        >
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">
+                        Enter the registered mobile number used during online application submission.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center gap-3 pt-1">
+                    <button 
+                        type="submit" 
+                        id="verify-btn"
+                        class="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2.5 bg-butex-navy hover:bg-butex-navyDark active:scale-[0.99] text-white font-semibold px-6 py-3.5 rounded-xl shadow-sm transition-all cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+                    >
+                        <!-- Spinner Icon (Hidden by default) -->
+                        <svg id="btn-spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <!-- Search/Check Icon -->
+                        <svg id="btn-icon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span id="btn-text">Verify Status</span>
+                    </button>
+
+                    <button 
+                        type="button" 
+                        id="reset-btn"
+                        class="w-full sm:w-auto px-5 py-3.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 font-medium text-sm transition-colors cursor-pointer"
+                    >
+                        Clear
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Error / Not Found Alert Box -->
+        <div id="error-box" class="hidden mt-6 bg-red-50 border-l-4 border-red-600 rounded-xl p-4 sm:p-5 shadow-sm transition-all" role="alert">
+            <div class="flex items-start gap-3.5">
+                <div class="text-red-600 shrink-0 mt-0.5">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-sm sm:text-base font-bold text-red-800">Verification Failed</h3>
+                    <p id="error-message" class="text-sm text-red-700 mt-1">
+                        Record Not Found! Please check the mobile number and try again.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Verified Applicant Result Card / Slip -->
+        <section id="result-card" class="hidden mt-6 bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden transition-all print:shadow-none print:border-slate-400 print:mt-2">
+            
+            <!-- Top Verified Banner -->
+            <div class="bg-emerald-50 border-b border-emerald-200 px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 block">
+                            Official Verification Confirmation
+                        </span>
+                        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">
+                            Application Verified &amp; Fee Paid
+                        </h3>
+                    </div>
+                </div>
+
+                <!-- Status Badges -->
+                <div class="flex items-center gap-2.5 self-start sm:self-center">
+                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-600 text-white shadow-xs tracking-wide">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        VERIFIED
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-butex-navy text-white shadow-xs tracking-wide">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        PAID
+                    </span>
+                </div>
+            </div>
+
+            <!-- Applicant Information Details -->
+            <div class="p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-5 border-b border-slate-200 gap-2">
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Applicant Full Name</p>
+                        <p class="text-xl sm:text-2xl font-extrabold text-butex-navy mt-0.5 tracking-tight">MD. RAFIUL ISLAM</p>
+                    </div>
+                    <div class="sm:text-right">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Verification ID</p>
+                        <p class="text-sm font-mono font-bold text-butex-maroon bg-red-50 border border-red-200/80 px-3 py-1 rounded-lg inline-block mt-0.5">
+                            BTX-2026-884920
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Structured Details Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/70">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Mobile Number</span>
+                        <span class="text-base font-bold text-slate-900 mt-1 block font-mono">01300057533</span>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/70">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Application Status</span>
+                        <span class="text-base font-bold text-emerald-700 mt-1 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                            Verified
+                        </span>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/70">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Payment Status</span>
+                        <span class="text-base font-bold text-emerald-700 mt-1 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                            Paid
+                        </span>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/70">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Unit / Category</span>
+                        <span class="text-base font-bold text-slate-900 mt-1 block">General</span>
+                    </div>
+
+                    <div class="sm:col-span-2 bg-slate-50 rounded-xl p-4 border border-slate-200/70">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">Applied Program</span>
+                        <span class="text-base font-bold text-slate-900 mt-1 block">
+                            B.Sc. in Textile Engineering (Undergraduate Admission)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Verification Note & Print Action -->
+                <div class="mt-6 pt-5 border-t border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <p class="text-xs text-slate-500 leading-relaxed max-w-md">
+                        This is a system-generated verification slip from the BUTEX Admission Portal. No manual signature is required.
+                    </p>
+                    <button 
+                        type="button" 
+                        id="print-btn"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-butex-maroon hover:bg-butex-maroonHover text-white text-sm font-semibold shadow-sm transition-colors cursor-pointer print:hidden"
+                    >
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                        </svg>
+                        Print / Save Slip
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Official Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-auto py-6 px-4 print:border-none">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 text-center sm:text-left">
+            <p class="font-medium text-slate-600">
+                &copy; 2026 Admission Office, Bangladesh University of Textiles (BUTEX). All Rights Reserved.
+            </p>
+            <p>
+                Powered by BUTEX ICT Cell &amp; Undergraduate Admission Committee
+            </p>
+        </div>
+    </footer>
+
+    <!-- Application Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('verification-form');
+            const mobileInput = document.getElementById('mobile-input');
+            const verifyBtn = document.getElementById('verify-btn');
+            const btnSpinner = document.getElementById('btn-spinner');
+            const btnIcon = document.getElementById('btn-icon');
+            const btnText = document.getElementById('btn-text');
+            const resetBtn = document.getElementById('reset-btn');
+            const errorBox = document.getElementById('error-box');
+            const errorMessage = document.getElementById('error-message');
+            const resultCard = document.getElementById('result-card');
+            const printBtn = document.getElementById('print-btn');
+
+            // Verified applicant record database
+            const VERIFIED_APPLICANTS = {
+                '01300057533': {
+                    name: 'MD. RAFIUL ISLAM',
+                    mobile: '01300057533',
+                    applicationStatus: 'Verified',
+                    paymentStatus: 'Paid',
+                    program: 'B.Sc. in Textile Engineering (Undergraduate Admission)',
+                    unit: 'General',
+                    verificationId: 'BTX-2026-884920'
+                }
+            };
+
+            // Toggle button loading state
+            function setLoadingState(isLoading) {
+                verifyBtn.disabled = isLoading;
+                if (isLoading) {
+                    btnSpinner.classList.remove('hidden');
+                    btnIcon.classList.add('hidden');
+                    btnText.textContent = 'Verifying...';
+                } else {
+                    btnSpinner.classList.add('hidden');
+                    btnIcon.classList.remove('hidden');
+                    btnText.textContent = 'Verify Status';
+                }
+            }
+
+            // Handle form submission
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                // Hide previous states
+                errorBox.classList.add('hidden');
+                resultCard.classList.add('hidden');
+
+                // Normalize input by trimming whitespace and stripping dashes/spaces
+                const rawInput = mobileInput.value.trim();
+                const normalizedNumber = rawInput.replace(/[\s-]/g, '');
+
+                if (!normalizedNumber) {
+                    errorMessage.textContent = 'Please enter a valid mobile number before verifying.';
+                    errorBox.classList.remove('hidden');
+                    mobileInput.focus();
+                    return;
+                }
+
+                // Simulate realistic server verification delay
+                setLoadingState(true);
+
+                setTimeout(() => {
+                    setLoadingState(false);
+
+                    if (Object.prototype.hasOwnProperty.call(VERIFIED_APPLICANTS, normalizedNumber)) {
+                        // Match found: display verified slip
+                        resultCard.classList.remove('hidden');
+                        resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else {
+                        // No match: show official error box
+                        errorMessage.textContent = 'Record Not Found! Please check the mobile number and try again.';
+                        errorBox.classList.remove('hidden');
+                    }
+                }, 450);
+            });
+
+            // Handle Reset / Clear button
+            resetBtn.addEventListener('click', () => {
+                mobileInput.value = '';
+                errorBox.classList.add('hidden');
+                resultCard.classList.add('hidden');
+                mobileInput.focus();
+            });
+
+            // Handle Print / Save Slip button
+            printBtn.addEventListener('click', () => {
+                window.print();
+            });
+        });
+    </script>
+</body>
+</html>
